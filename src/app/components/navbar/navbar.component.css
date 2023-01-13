@@ -2,16 +2,17 @@
   flex: 1 1 auto;
 }
 
+.navBtnMargin{
+  margin: 2px;
+  padding: 15px;
+}
+
+.mat-mdc-menu-item{
+  width: auto;
+}
+
 button{
-  margin: 5px;
+  margin: 10px;
   min-width: 120px;
 }
 
-.mat-button{
-  margin: 5px;
-  min-width: 120px;
-}
-
-span{
-  margin-left: 40px;
-}
