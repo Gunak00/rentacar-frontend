@@ -1,0 +1,121 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-myprimary: (
+  50 : #e7e6ec,
+  100 : #c3c1d0,
+  200 : #9b98b1,
+  300 : #726e91,
+  400 : #544f7a,
+  500 : #363062,
+  600 : #302b5a,
+  700 : #292450,
+  800 : #221e46,
+  900 : #161334,
+  A100 : #7e74ff,
+  A200 : #4e41ff,
+  A400 : #1f0eff,
+  A700 : #1100f3,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+$md-myaccent: (
+  50 : #f0eef3,
+  100 : #dad5e0,
+  200 : #c1b9cb,
+  300 : #a89db6,
+  400 : #9588a7,
+  500 : #827397,
+  600 : #7a6b8f,
+  700 : #6f6084,
+  800 : #65567a,
+  900 : #524369,
+  A100 : #dbc3ff,
+  A200 : #bc90ff,
+  A400 : #9d5dff,
+  A700 : #8e44ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #ffffff,
+  )
+);
+
+$md-mcwarn: (
+  50 : #fcfafb,
+  100 : #f8f2f4,
+  200 : #f4eaed,
+  300 : #f0e2e5,
+  400 : #ecdbe0,
+  500 : #e9d5da,
+  600 : #e6d0d6,
+  700 : #e3cad0,
+  800 : #dfc4cb,
+  900 : #d9bac2,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ffffff,
+  A700 : #ffffff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+
+$my-primary: mat.define-palette($md-myprimary, 500);
+$my-accent: mat.define-palette($md-myaccent, A200, A100, A400);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat.define-palette($md-mcwarn);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    warn: $my-warn,
+  )
+));
+
+@include mat.all-component-themes($my-theme);
