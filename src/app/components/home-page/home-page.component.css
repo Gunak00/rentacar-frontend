@@ -32,5 +32,6 @@
 .btnCheck{
   margin-left: 10%;
   min-height: 60px;
+  min-width: 120px;
   font-size: 20px;
 }
