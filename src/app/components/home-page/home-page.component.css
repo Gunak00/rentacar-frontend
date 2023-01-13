@@ -1,0 +1,36 @@
+.container{
+  display: flex;
+  height: auto;
+  box-shadow: 0px -3px 3px -2px rgba(0,0,0,0.2);
+}
+
+.firstColumn{
+  width: 70%;
+  float: left;
+}
+
+.secondColumn{
+  width: 30%;
+  float: left;
+}
+
+.center{
+  /*background-color: #3f51b5;*/
+  background-color: #3849a2;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-headline-4{
+  margin: 10%;
+  color: white;
+  font-weight: 500;
+}
+
+.btnCheck{
+  margin-left: 10%;
+  min-height: 60px;
+  font-size: 20px;
+}

@@ -15,12 +15,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {FormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
+import { HomePageComponent } from './components/home-page/home-page.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatRippleModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import {MatMenuModule} from "@angular/material/menu";
     MatIconModule,
     MatListModule,
     FormsModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
