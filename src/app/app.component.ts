@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Car} from "./model/car";
-import {CarService} from "./services/car.service";
+import {Car} from "./components/car/model/car";
+import {CarService} from "./components/car/service/car.service";
 import {HttpErrorResponse} from "@angular/common/http";
 import {error} from "@angular/compiler-cli/src/transformers/util";
 
