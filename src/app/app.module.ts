@@ -18,16 +18,23 @@ import {MatMenuModule} from "@angular/material/menu";
 import { HomePageComponent } from './components/home-page/home-page.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatRippleModule} from "@angular/material/core";
+import {RouterModule} from "@angular/router";
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     NavbarComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([
+      { path: '', component: HomePageComponent },
+      { path: 'login', component: LoginComponent }
+    ]),
     HttpClientModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
@@ -45,4 +52,6 @@ import {MatRippleModule} from "@angular/material/core";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
