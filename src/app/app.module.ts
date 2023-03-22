@@ -20,6 +20,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatRippleModule} from "@angular/material/core";
 import {RouterModule} from "@angular/router";
 import { LoginComponent } from './components/login/login.component';
+import {RoutingModule} from "./routing.module";
 
 @NgModule({
   declarations: [
@@ -31,10 +32,7 @@ import { LoginComponent } from './components/login/login.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      { path: '', component: HomePageComponent },
-      { path: 'login', component: LoginComponent }
-    ]),
+    RoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,

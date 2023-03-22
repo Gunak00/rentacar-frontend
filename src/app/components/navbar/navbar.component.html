@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
-<!--  Logo-->
+  <!--  Logo-->
   <a mat-button class="navBtnMargin">
     <mat-icon>directions_car</mat-icon>
     <span>RentACar</span>
   </a>
-<!--  Wynajem-->
+  <!--  Wynajem-->
   <!--  <a mat-button class="navBtnMargin">Wynajem auta</a>-->
   <button mat-button [matMenuTriggerFor]="menuRent">Wynajem auta</button>
   <mat-menu #menuRent="matMenu" class="matMenuCustomize">
@@ -16,9 +16,10 @@
   <a mat-button class="navBtnMargin">Kontakt</a>
   <div class="spacer"></div>
   <div style="display: flex; align-items: center; margin: 10px">
-    <mat-icon style="margin-right: 5px" fontIcon="phone"></mat-icon>123 132 321
+    <mat-icon style="margin-right: 5px" fontIcon="phone"></mat-icon>
+    123 132 321
   </div>
-  <button mat-raised-button color="accent">Zaloguj</button>
+  <button mat-raised-button color="accent" routerLink="login">Zaloguj</button>
   <button mat-raised-button color="accent">Zarejestruj</button>
 </mat-toolbar>
 
