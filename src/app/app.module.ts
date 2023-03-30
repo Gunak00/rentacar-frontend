@@ -13,7 +13,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
 import { HomePageComponent } from './components/home-page/home-page.component';
 import {MatCardModule} from "@angular/material/card";
@@ -21,6 +21,9 @@ import {MatRippleModule} from "@angular/material/core";
 import {RouterModule} from "@angular/router";
 import { LoginComponent } from './components/login/login.component';
 import {RoutingModule} from "./routing.module";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {RegisterComponent} from "./components/register/register.component";
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import {RoutingModule} from "./routing.module";
     UserComponent,
     NavbarComponent,
     HomePageComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,10 @@ import {RoutingModule} from "./routing.module";
     FormsModule,
     MatMenuModule,
     MatCardModule,
-    MatRippleModule
+    MatRippleModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

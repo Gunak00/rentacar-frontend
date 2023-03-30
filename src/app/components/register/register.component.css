@@ -1,10 +1,6 @@
-.container{
-
-}
-
 mat-card {
   max-width: 500px;
-  margin: 3em auto;
+  margin: 1em auto;
   padding: 0;
   text-align: center;
   /*background-color: var(--mat-mdc-button-persistent-ripple-color);*/

@@ -1,1 +1,37 @@
-<p>login works!</p>
+<app-navbar></app-navbar>
+
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Podaj email i hasło, aby się zalogować:</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email">
+          <mat-error
+            *ngIf="loginForm.get('email').errors?.['required'] && loginForm.get('email').touched; else notValidEmail">
+            Email jest wymagany.
+          </mat-error>
+          <ng-template #notValidEmail>
+            <mat-error>Podany email jest nieprawidłowy</mat-error>
+          </ng-template>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Hasło</mat-label>
+          <input matInput formControlName="password" type="password">
+          <mat-error *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched">
+            Hasło jest wymagane.
+          </mat-error>
+
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button mat-raised-button color="accent" type="submit">Zaloguj</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
