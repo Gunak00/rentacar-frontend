@@ -1,16 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {UserService} from "../user/service/user.service";
+import {User} from "../user/model/user";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -26,5 +29,8 @@ export class RegisterComponent implements OnInit{
 
   onSubmit() {
     // Handle form submission here
+    this.userService.addUser(this.registerForm.value).subscribe(response =>{
+      console.log(response);
+    })
   }
 }

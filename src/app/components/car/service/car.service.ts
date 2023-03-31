@@ -9,7 +9,7 @@ import {environment} from "../../../environments/environment";
 })
 export class CarService {
 
-  apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = environment.apiBaseUrl;
   constructor(private http: HttpClient) {
   }
 
