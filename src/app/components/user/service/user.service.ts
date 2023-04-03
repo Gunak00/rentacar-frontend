@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../model/user";
 import * as cluster from "cluster";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class UserService {
 
   private apiServerUrl = environment.apiBaseUrl;
   private header = new HttpHeaders();
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   public login(payload: any){
     return this.http.post(`${this.apiServerUrl}/user/login`, payload);
@@ -37,6 +38,10 @@ export class UserService {
 
   public deleteUser(userId: number): Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/user/delete/${userId}`);
+  }
+
+  public isAdmin(role: string): boolean{
+    return this.authService.getRole() === "ROLE_ADMIN";
   }
 
 }

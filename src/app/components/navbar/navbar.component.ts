@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {AuthService} from "../user/service/auth.service";
+import {using} from "rxjs";
+import {UserService} from "../user/service/user.service";
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +9,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  constructor(private authService: AuthService, private userService: UserService) {
+  }
+
+  public isLoggedIn(){
+    return this.authService.isLoggedIn();
+  }
+
+  public logout(){
+    return this.authService.clear();
+  }
+
+  public isAdmin(): boolean{
+    return this.userService.isAdmin("ROLE_ADMIN");
+  }
 
 }
