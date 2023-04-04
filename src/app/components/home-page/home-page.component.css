@@ -1,6 +1,11 @@
+.mainContainer{
+  height: 100%;
+  width: 100%;
+}
+
 .container{
   display: flex;
-  height: auto;
+  /*height: auto;*/
   box-shadow: 0px -3px 3px -2px rgba(0,0,0,0.2);
 }
 
@@ -34,4 +39,43 @@
   min-height: 60px;
   min-width: 120px;
   font-size: 20px;
+}
+
+.leftColumn{
+  background-color: #3849a2;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card.description{
+  background-color: inherit;
+  padding-left: 3em;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  height: inherit;
+  justify-content: center;
+}
+
+.mat-headline-5{
+  font-weight: 700;
+}
+
+.example-card {
+  /*height: 100%;*/
+  max-width: 400px;
+  height: 560px;
+  background-color: #3849a2;
+  color: white;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.types{
+  min-height: 160px;
+  overflow: hidden;
+}
+
+.right-button {
+  margin-right: 1em;
 }

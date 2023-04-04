@@ -27,6 +27,9 @@ import {AuthGuard} from "./components/user/service/auth.guard";
 import {AuthInterceptor} from "./components/user/service/auth.interceptor";
 import { AdminComponent } from './components/admin/admin.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import {AddCarComponent} from "./components/admin/add-car/add-car.component";
+import {ListCarsComponent} from "./components/admin/list-cars/list-cars.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
     LoginComponent,
     RegisterComponent,
     AdminComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    AddCarComponent,
+    ListCarsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,8 @@ import { ForbiddenComponent } from './components/forbidden/forbidden.component';
     MatRippleModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule
   ],
   providers: [
     AuthGuard,

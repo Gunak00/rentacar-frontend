@@ -7,7 +7,8 @@ export interface Car{
   name: string;
   model: string;
   category: string;
-  priceForDay: number;
+  priceShortTerm: number;
+  priceLongTerm: number;
   manufactureYear: number;
   numberOfPeople: number;
   airCon: boolean;
