@@ -11,13 +11,13 @@ import {AuthService} from "./auth.service";
 export class UserService {
 
   private apiServerUrl = environment.apiBaseUrl;
-  private header = new HttpHeaders();
+  private header = new HttpHeaders({'No-Auth': 'True'});
+
 
   constructor(private http: HttpClient, private authService: AuthService) {
   }
 
   public login(payload: any) {
-    this.header = this.header.set('No-Auth', 'True');
     return this.http.post(`${this.apiServerUrl}/user/login`, payload, {
       headers: this.header
     });
@@ -33,7 +33,7 @@ export class UserService {
   }
 
   public addUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiServerUrl}/user/add`, user);
+    return this.http.post<User>(`${this.apiServerUrl}/user/add`, user, {headers: this.header});
   }
 
   public updateUser(user: User): Observable<User> {
