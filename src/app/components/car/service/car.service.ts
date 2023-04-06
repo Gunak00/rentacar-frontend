@@ -10,13 +10,25 @@ import {environment} from "../../../environments/environment";
 export class CarService {
 
   private apiServerUrl = environment.apiBaseUrl;
-  requestHeader = new HttpHeaders({'No-Auth': 'True'});
+  header = new HttpHeaders({'No-Auth': 'True'});
   constructor(private http: HttpClient) {
   }
 
   public getAllCars(): Observable<Car[]> {
     return this.http.get<Car[]>(`${this.apiServerUrl}/car/all`, {
-      headers: this.requestHeader
+      headers: this.header
     });
+  }
+
+  public addCar(car: Car): Observable<Car> {
+    return this.http.post<Car>(`${this.apiServerUrl}/car/add`, car);
+  }
+
+  public editCar(car: Car): Observable<Car> {
+    return this.http.put<Car>(`${this.apiServerUrl}/car/update`, car);
+  }
+
+  public deleteCar(carId: number): Observable<void>{
+    return this.http.delete<void>(`${this.apiServerUrl}/car/delete/${carId}`);
   }
 }

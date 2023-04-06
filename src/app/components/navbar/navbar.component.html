@@ -14,7 +14,7 @@
 
   <a mat-button class="navBtnMargin">Nasza flota</a>
   <a mat-button class="navBtnMargin">Kontakt</a>
-  <a *ngIf="isAdmin()" mat-button class="navBtnMargin">Edytuj samochody</a>
+  <a *ngIf="isAdmin()" mat-button class="navBtnMargin" routerLink="/admin">Edytuj samochody</a>
   <div class="spacer"></div>
   <div style="display: flex; align-items: center; margin: 10px">
     <mat-icon style="margin-right: 5px" fontIcon="phone"></mat-icon>

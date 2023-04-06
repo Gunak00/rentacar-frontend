@@ -29,7 +29,11 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import {AddCarComponent} from "./components/admin/add-car/add-car.component";
-import {ListCarsComponent} from "./components/admin/list-cars/list-cars.component";
+import {MatTableModule} from "@angular/material/table";
+import {MatSelectModule} from "@angular/material/select";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import { EditCarComponent } from './components/admin/edit-car/edit-car.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,7 @@ import {ListCarsComponent} from "./components/admin/list-cars/list-cars.componen
     AdminComponent,
     ForbiddenComponent,
     AddCarComponent,
-    ListCarsComponent
+    EditCarComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,11 @@ import {ListCarsComponent} from "./components/admin/list-cars/list-cars.componen
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTableModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [
     AuthGuard,

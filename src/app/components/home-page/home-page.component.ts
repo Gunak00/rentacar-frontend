@@ -9,26 +9,10 @@ import {Router} from "@angular/router";
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent implements OnInit{
+export class HomePageComponent{
 
-  public cars: Car[];
 
-  constructor(private carService: CarService, private router: Router) {
-  }
-
-  ngOnInit(): void {
-    this.getAllCars();
-  }
-  public getAllCars(): void {
-    this.carService.getAllCars().subscribe({
-        next: (response: Car[]) => {
-          this.cars = response;
-        },
-        error: (error: HttpErrorResponse) => {
-          alert(error.message);
-        }
-      }
-    )
+  constructor() {
   }
 
   public goToMyElement(){

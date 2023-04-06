@@ -1,0 +1,27 @@
+mat-card{
+  margin: 3em;
+  padding: 3em 3em 7em;
+  background-color: #3849a2;
+}
+
+table{
+  width: 100%;
+}
+
+.mat-column-name, .mat-column-model{
+  width: 10%;
+}
+
+.mat-column-id, .mat-column-action, .mat-column-priceShortTerm, .mat-column-priceLongTerm {
+  width: 5%;
+}
+
+button{
+  margin-right: 1em;
+}
+
+.example-fab {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+}

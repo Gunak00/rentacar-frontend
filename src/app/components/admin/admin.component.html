@@ -1,1 +1,45 @@
-<p>admin works!</p>
+<mat-card>
+
+  <button mat-fab class="example-fab" routerLink="/add" aria-label="Example icon button with a plus icon">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <table mat-table [dataSource]="cars">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let car">{{car.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nazwa</th>
+      <td mat-cell *matCellDef="let car">{{car.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef>Model</th>
+      <td mat-cell *matCellDef="let car">{{car.model}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="priceShortTerm">
+      <th mat-header-cell *matHeaderCellDef>Cena za wynajem krótkoterminowy</th>
+      <td mat-cell *matCellDef="let car">{{car.priceShortTerm}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="priceLongTerm">
+      <th mat-header-cell *matHeaderCellDef>Cena za wynajem długoterminowy</th>
+      <td mat-cell *matCellDef="let car">{{car.priceLongTerm}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Akcje </th>
+      <td mat-cell *matCellDef="let car">
+        <button mat-mini-fab color="primary" (click)="editCar(car.id)"><mat-icon>edit</mat-icon></button>
+        <button mat-mini-fab color="warn" (click)="deleteCar(car.id)"><mat-icon>delete</mat-icon></button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
+</mat-card>
+

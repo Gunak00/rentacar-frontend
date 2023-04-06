@@ -1,29 +1,27 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {CarService} from "../../car/service/car.service";
+import {AuthService} from "../../user/service/auth.service";
 import {CarFuelType} from "../../car/enums/carFuelType";
 import {CarGearboxType} from "../../car/enums/carGearboxType";
 import {CarDriveType} from "../../car/enums/carDriveType";
-import {CarService} from "../../car/service/car.service";
-import {AuthService} from "../../user/service/auth.service";
-import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
 
 @Component({
-  selector: 'app-add-car',
-  templateUrl: './add-car.component.html',
-  styleUrls: ['./add-car.component.css']
+  selector: 'app-edit-car',
+  templateUrl: './edit-car.component.html',
+  styleUrls: ['./edit-car.component.css']
 })
-export class AddCarComponent implements OnInit{
-  public addCarForm: FormGroup;
+export class EditCarComponent implements OnInit{
+
+  public editCarForm: FormGroup;
   fuelTypes = Object.values(CarFuelType);
   gearboxTypes = Object.values(CarGearboxType);
   driveTypes = Object.values(CarDriveType);
 
   constructor(private formBuilder: FormBuilder, private carService: CarService, private authService: AuthService) {
   }
-
-
   ngOnInit(): void {
-    this.addCarForm = this.formBuilder.group({
+    this.editCarForm = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       model: new FormControl('', [Validators.required]),
       category: new FormControl('', [Validators.required]),
@@ -41,9 +39,9 @@ export class AddCarComponent implements OnInit{
   }
 
   onSubmit() {
-    console.log(this.addCarForm.value)
-    this.carService.addCar(this.addCarForm.value).subscribe(value => {
+    this.carService.editCar(this.editCarForm.value).subscribe(value => {
       console.log(value);
     });
   }
+
 }
