@@ -20,6 +20,10 @@ export class CarService {
     });
   }
 
+  public getCar(carId: number): Observable<Car>{
+    return this.http.get<Car>(`${this.apiServerUrl}/car/find/${carId}`)
+  }
+
   public addCar(car: Car): Observable<Car> {
     return this.http.post<Car>(`${this.apiServerUrl}/car/add`, car);
   }
@@ -31,4 +35,16 @@ export class CarService {
   public deleteCar(carId: number): Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/car/delete/${carId}`);
   }
+
+  public uploadImage(formData: FormData){
+    return this.http.post(`${this.apiServerUrl}/car/uploadImage`, formData);
+  }
+
+  public getImage(carId: number, imageName: string): Observable<Blob>{
+    const headers = new HttpHeaders({'Content-Type': 'image/jpeg'});
+    const options = {headers: headers, responseType: 'blob' as 'json'};
+
+    return this.http.get(`${this.apiServerUrl}/car/image/${carId}/${imageName}`, options) as Observable<Blob>;
+  }
+
 }

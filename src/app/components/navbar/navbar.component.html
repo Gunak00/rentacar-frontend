@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <!--  Logo-->
-  <a mat-button class="navBtnMargin">
+  <a mat-button class="navBtnMargin" routerLink="/home">
     <mat-icon>directions_car</mat-icon>
     <span>RentACar</span>
   </a>
@@ -8,7 +8,7 @@
   <!--  <a mat-button class="navBtnMargin">Wynajem auta</a>-->
   <button mat-button [matMenuTriggerFor]="menuRent">Wynajem auta</button>
   <mat-menu #menuRent="matMenu" class="matMenuCustomize">
-    <button mat-menu-item>Krótkoterminowy</button>
+    <button mat-menu-item routerLink="/rentCar">Krótkoterminowy</button>
     <button mat-menu-item>Długoterminowy</button>
   </mat-menu>
 

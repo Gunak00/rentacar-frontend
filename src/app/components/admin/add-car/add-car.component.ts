@@ -45,5 +45,8 @@ export class AddCarComponent implements OnInit{
     this.carService.addCar(this.addCarForm.value).subscribe(value => {
       console.log(value);
     });
+
   }
+
+
 }

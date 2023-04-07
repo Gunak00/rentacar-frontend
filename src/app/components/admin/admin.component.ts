@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Car} from "../car/model/car";
 import {HttpErrorResponse} from "@angular/common/http";
 import {CarService} from "../car/service/car.service";
+import {Router} from "@angular/router";
+import {ProxyEditCarService} from "./edit-car/proxy-edit-car.service";
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +15,7 @@ export class AdminComponent implements OnInit {
   public cars: Car[];
   columnsToDisplay = ['id', 'name', 'model', 'priceShortTerm', 'priceLongTerm', 'action'];
 
-  constructor(private carService: CarService) {
+  constructor(private carService: CarService, private router: Router, private proxyEditCar: ProxyEditCarService) {
   }
 
   ngOnInit(): void {
@@ -51,7 +53,7 @@ export class AdminComponent implements OnInit {
   }
 
   public editCar(carId: number) {
-    localStorage.setItem('carId', carId.toString());
-
+    this.proxyEditCar.setCar(this.cars.find(car => car.id === carId));
+    this.router.navigate(['/edit']).then(r => {});
   }
 }

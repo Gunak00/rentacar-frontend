@@ -34,6 +34,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { EditCarComponent } from './components/admin/edit-car/edit-car.component';
+import { RentCarComponent } from './components/car/rent-car/rent-car.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EditCarComponent } from './components/admin/edit-car/edit-car.component
     AdminComponent,
     ForbiddenComponent,
     AddCarComponent,
-    EditCarComponent
+    EditCarComponent,
+    RentCarComponent
   ],
   imports: [
     BrowserModule,

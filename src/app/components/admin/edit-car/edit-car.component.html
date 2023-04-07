@@ -66,8 +66,8 @@
           <mat-form-field>
             <mat-label>Klimatyzacja</mat-label>
             <mat-select formControlName="airCon">
-              <mat-option value=True>Tak</mat-option>
-              <mat-option value=False>Nie</mat-option>
+              <mat-option value="{{true}}">Tak</mat-option>
+              <mat-option value="{{false}}">Nie</mat-option>
             </mat-select>
           </mat-form-field>
         </mat-grid-tile>
@@ -121,10 +121,25 @@
           </mat-form-field>
         </mat-grid-tile>
 
+        <mat-grid-tile colspan="2">
+          <input type="file" class="file-input"
+                 (change)="onFileSelected($event)" #fileUpload>
+
+          <div class="file-upload">
+
+            {{fileName || "Jeszcze nie dodano zdjęcia samochodu"}}
+
+            <button mat-mini-fab color="primary" class="upload-btn"
+                    (click)="fileUpload.click()">
+              <mat-icon>attach_file</mat-icon>
+            </button>
+          </div>
+        </mat-grid-tile>
+
       </mat-grid-list>
 
       <mat-card-actions>
-        <button mat-raised-button color="accent" type="submit" [disabled]="addCarForm.invalid">Dodaj</button>
+        <button mat-raised-button color="accent" type="submit" [disabled]="editCarForm.invalid">Dodaj</button>
       </mat-card-actions>
     </form>
   </mat-card-content>

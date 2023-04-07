@@ -5,22 +5,70 @@ import {AuthService} from "../../user/service/auth.service";
 import {CarFuelType} from "../../car/enums/carFuelType";
 import {CarGearboxType} from "../../car/enums/carGearboxType";
 import {CarDriveType} from "../../car/enums/carDriveType";
+import {Car} from "../../car/model/car";
+import {ProxyEditCarService} from "./proxy-edit-car.service";
 
 @Component({
   selector: 'app-edit-car',
   templateUrl: './edit-car.component.html',
   styleUrls: ['./edit-car.component.css']
 })
-export class EditCarComponent implements OnInit{
+export class EditCarComponent implements OnInit {
 
   public editCarForm: FormGroup;
+  public editCar: Car;
+  fileName: string;
+
+
+  booleans: boolean[] = [true, false];
   fuelTypes = Object.values(CarFuelType);
   gearboxTypes = Object.values(CarGearboxType);
   driveTypes = Object.values(CarDriveType);
 
-  constructor(private formBuilder: FormBuilder, private carService: CarService, private authService: AuthService) {
+  constructor(private carService: CarService, private proxyEditCarService: ProxyEditCarService, private formBuilder: FormBuilder) {
+    this.newForm();
+    this.editCar = proxyEditCarService.getCar();
+    this.fileName = this.editCar.imageUrl;
   }
+
   ngOnInit(): void {
+    this.editCarForm.setValue({
+      name: this.editCar.name,
+      model: this.editCar.model,
+      category: this.editCar.category,
+      priceShortTerm: this.editCar.priceShortTerm,
+      priceLongTerm: this.editCar.priceLongTerm,
+      manufactureYear: this.editCar.manufactureYear,
+      numberOfPeople: this.editCar.numberOfPeople,
+      airCon: this.editCar.airCon,
+      fuel: this.editCar.fuel,
+      gearbox: this.editCar.gearbox,
+      numberOfDoor: this.editCar.numberOfDoor,
+      engineSize: this.editCar.engineSize,
+      driveType: this.editCar.driveType
+    })
+  }
+
+  onSubmit() {
+    this.editCar.name = this.editCarForm.value.name;
+    this.editCar.model = this.editCarForm.value.model;
+    this.editCar.category = this.editCarForm.value.category;
+    this.editCar.priceShortTerm = this.editCarForm.value.priceShortTerm;
+    this.editCar.priceLongTerm = this.editCarForm.value.priceLongTerm;
+    this.editCar.manufactureYear = this.editCarForm.value.manufactureYear;
+    this.editCar.numberOfPeople = this.editCarForm.value.numberOfPeople;
+    this.editCar.airCon = this.editCarForm.value.airCon;
+    this.editCar.fuel = this.editCarForm.value.fuel;
+    this.editCar.gearbox = this.editCarForm.value.gearbox;
+    this.editCar.numberOfDoor = this.editCarForm.value.numberOfDoor;
+    this.editCar.engineSize = this.editCarForm.value.engineSize;
+    this.editCar.driveType = this.editCarForm.value.driveType;
+
+    this.carService.editCar(this.editCar).subscribe(value => {
+    });
+  }
+
+  private newForm() {
     this.editCarForm = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       model: new FormControl('', [Validators.required]),
@@ -38,10 +86,19 @@ export class EditCarComponent implements OnInit{
     })
   }
 
-  onSubmit() {
-    this.carService.editCar(this.editCarForm.value).subscribe(value => {
-      console.log(value);
-    });
+  onFileSelected(event) {
+    const file: File = event.target.files[0];
+
+    if (file){
+      this.fileName = file.name;
+      const formData = new FormData();
+      formData.append('carId', this.editCar.id.toString());
+      formData.append('file', file);
+
+
+      const upload$ = this.carService.uploadImage(formData);
+      upload$.subscribe();
+    }
   }
 
 }
