@@ -14,7 +14,6 @@ export class RentCarComponent implements OnInit {
   // public imageUrl: SafeUrl;
   public car: Car;
   public cars: Car[];
-  public imagesUrl: SafeUrl[] = [];
   public defaultImage: string = "../../../assets/images/home-page/small.jpg";
 
 
@@ -32,7 +31,7 @@ export class RentCarComponent implements OnInit {
     this.carService.getImage(car.id, car.imageUrl).subscribe(blob => {
       imageUrl = this.sanitizer.bypassSecurityTrustUrl(
         urlCreator.createObjectURL(blob));
-      this.imagesUrl.push(imageUrl);
+      car.imageSafeUrl = imageUrl;
     })
   }
 
@@ -45,7 +44,7 @@ export class RentCarComponent implements OnInit {
             if (car.imageUrl) {
               this.getCarImage(car);
             }else{
-              this.imagesUrl.push(this.defaultImage);
+              car.imageSafeUrl = this.defaultImage;
             }
           })
         },

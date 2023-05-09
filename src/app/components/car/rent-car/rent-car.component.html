@@ -1,10 +1,30 @@
-<!--<div *ngFor="let url of imagesUrl">-->
-<!--  <p>DUUUUUUUUUPA</p>-->
-<!--  <p>{{imagesUrl.length}}</p>-->
-<!--  <img [src]="url" alt="Image">-->
-<!--</div>-->
-
-
-<mat-grid-list cols="4">
-
-</mat-grid-list>
+<mat-card *ngFor="let car of cars">
+  <mat-card-header>
+    <mat-card-title>{{car.name}} {{car.model}}</mat-card-title>
+    <mat-card-title>Wynajem długoterminowy: {{car.priceLongTerm}}zł za dzień</mat-card-title>
+    <mat-card-title>Wynajem krótkoterminowy: {{car.priceShortTerm}}zł za dzień</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image [src]="car.imageSafeUrl" alt="Image of {{car.name}}" height="250px">
+  <mat-card-content>
+    <mat-grid-list cols="2">
+      <mat-grid-tile>
+        <mat-list>
+          <mat-list-item><span style="color: white">Kategoria: {{car.category}}</span></mat-list-item>
+          <mat-list-item>Rok produkcji: {{car.manufactureYear}}</mat-list-item>
+          <mat-list-item>Liczba osób: {{car.numberOfPeople}}</mat-list-item>
+          <mat-list-item>Klimatyzacja: {{car.airCon}}</mat-list-item>
+          <mat-list-item>Paliwo: {{car.fuel}}</mat-list-item>
+        </mat-list>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-list>
+          <mat-list-item>Skrzynia biegów: {{car.gearbox}}</mat-list-item>
+          <mat-list-item>Liczba drzwi: {{car.numberOfDoor}}</mat-list-item>
+          <mat-list-item>Pojemność silnika: {{car.engineSize}}</mat-list-item>
+          <mat-list-item>Napęd: {{car.driveType}}</mat-list-item>
+          <mat-list-item>Czy dostępny: {{car.isAvailable}}</mat-list-item>
+        </mat-list>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>

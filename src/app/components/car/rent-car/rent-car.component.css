@@ -1,0 +1,32 @@
+mat-card{
+  margin: 3em;
+  max-width: 500px;
+  background-color: #3849a2;
+  color: white;
+}
+
+/*.align-right {*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  color: white;*/
+/*}*/
+
+/*.align-left {*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  color: white;*/
+/*}*/
+
+mat-grid-tile{
+  float: none;
+  text-align: left;
+  position: absolute;
+  left: 0;
+}
+
+/*mdc-list-item__primary-text {*/
+/*  color: white !important;*/
+/*}*/
+
+
+

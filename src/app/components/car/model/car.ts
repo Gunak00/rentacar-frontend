@@ -1,6 +1,7 @@
 import {CarFuelType} from "../enums/carFuelType";
 import {CarGearboxType} from "../enums/carGearboxType";
 import {CarDriveType} from "../enums/carDriveType";
+import {SafeUrl} from "@angular/platform-browser";
 
 export interface Car{
   id: number;
@@ -19,4 +20,5 @@ export interface Car{
   driveType:  CarDriveType;
   imageUrl: string;
   isAvailable: boolean;
+  imageSafeUrl: SafeUrl;
 }
