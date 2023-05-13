@@ -1,8 +1,18 @@
 mat-card{
   margin: 3em;
-  max-width: 500px;
+  width: 580px;
   background-color: #3849a2;
   color: white;
+  /*display: flex;*/
+  /*height: 100%;*/
+}
+
+span{
+  color: white;
+}
+
+mat-grid-list, mat-grid-tile{
+  height: 100px;
 }
 
 /*.align-right {*/
@@ -15,17 +25,6 @@ mat-card{
 /*  position: absolute;*/
 /*  left: 0;*/
 /*  color: white;*/
-/*}*/
-
-mat-grid-tile{
-  float: none;
-  text-align: left;
-  position: absolute;
-  left: 0;
-}
-
-/*mdc-list-item__primary-text {*/
-/*  color: white !important;*/
 /*}*/
 
 

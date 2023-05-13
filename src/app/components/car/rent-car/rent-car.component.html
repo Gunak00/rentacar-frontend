@@ -1,30 +1,53 @@
-<mat-card *ngFor="let car of cars">
-  <mat-card-header>
-    <mat-card-title>{{car.name}} {{car.model}}</mat-card-title>
-    <mat-card-title>Wynajem długoterminowy: {{car.priceLongTerm}}zł za dzień</mat-card-title>
-    <mat-card-title>Wynajem krótkoterminowy: {{car.priceShortTerm}}zł za dzień</mat-card-title>
-  </mat-card-header>
-  <img mat-card-image [src]="car.imageSafeUrl" alt="Image of {{car.name}}" height="250px">
-  <mat-card-content>
-    <mat-grid-list cols="2">
-      <mat-grid-tile>
-        <mat-list>
-          <mat-list-item><span style="color: white">Kategoria: {{car.category}}</span></mat-list-item>
-          <mat-list-item>Rok produkcji: {{car.manufactureYear}}</mat-list-item>
-          <mat-list-item>Liczba osób: {{car.numberOfPeople}}</mat-list-item>
-          <mat-list-item>Klimatyzacja: {{car.airCon}}</mat-list-item>
-          <mat-list-item>Paliwo: {{car.fuel}}</mat-list-item>
-        </mat-list>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <mat-list>
-          <mat-list-item>Skrzynia biegów: {{car.gearbox}}</mat-list-item>
-          <mat-list-item>Liczba drzwi: {{car.numberOfDoor}}</mat-list-item>
-          <mat-list-item>Pojemność silnika: {{car.engineSize}}</mat-list-item>
-          <mat-list-item>Napęd: {{car.driveType}}</mat-list-item>
-          <mat-list-item>Czy dostępny: {{car.isAvailable}}</mat-list-item>
-        </mat-list>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-card-content>
-</mat-card>
+<div>
+  <mat-card *ngFor="let car of cars">
+    <mat-card-header>
+      <mat-card-title>{{car.name}} {{car.model}}</mat-card-title>
+      <mat-card-title>Wynajem długoterminowy: {{car.priceLongTerm}}zł za dzień</mat-card-title>
+      <mat-card-title>Wynajem krótkoterminowy: {{car.priceShortTerm}}zł za dzień</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="car.imageSafeUrl" alt="Image of {{car.name}}" height="270px">
+    <mat-card-content>
+      <mat-grid-list cols="4">
+        <mat-grid-tile>
+          <mat-list style="text-align: right">
+            <mat-list-item><span>Kategoria:</span></mat-list-item>
+            <mat-list-item><span>Rok produkcji:</span></mat-list-item>
+            <mat-list-item><span>Liczba osób:</span></mat-list-item>
+            <mat-list-item><span>Klimatyzacja:</span></mat-list-item>
+            <mat-list-item><span>Paliwo:</span></mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item><span><b>{{car.category}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.manufactureYear}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.numberOfPeople}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.airCon}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.fuel}}</b></span></mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list style="text-align: right;">
+            <mat-list-item><span>Skrzynia biegów:</span></mat-list-item>
+            <mat-list-item><span>Liczba drzwi:</span></mat-list-item>
+            <mat-list-item><span>Silnik:</span></mat-list-item>
+            <mat-list-item><span>Napęd:</span></mat-list-item>
+            <mat-list-item><span>Czy dostępny:</span></mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-list>
+            <mat-list-item><span><b>{{car.gearbox}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.numberOfDoor}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.engineSize}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.driveType}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.isAvailable}}</b></span></mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button>Kurwa jebana</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

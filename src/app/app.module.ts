@@ -35,6 +35,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { EditCarComponent } from './components/admin/edit-car/edit-car.component';
 import { RentCarComponent } from './components/car/rent-car/rent-car.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { RentCarComponent } from './components/car/rent-car/rent-car.component';
     MatTableModule,
     MatSelectModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FlexLayoutModule
   ],
   providers: [
     AuthGuard,
