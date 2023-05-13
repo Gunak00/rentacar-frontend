@@ -5,6 +5,10 @@ mat-card{
   color: white;
 }
 
+mat-card-subtitle{
+  color: lightgray;
+}
+
 span{
   color: white;
 }

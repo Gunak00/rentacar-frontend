@@ -41,7 +41,7 @@ export class CarService {
   }
 
   public getImage(carId: number, imageName: string): Observable<Blob>{
-    const headers = new HttpHeaders({'Content-Type': 'image/jpeg'});
+    const headers = new HttpHeaders({'Content-Type': 'image/jpeg', 'No-Auth': 'True'});
     const options = {headers: headers, responseType: 'blob' as 'json'};
 
     return this.http.get(`${this.apiServerUrl}/car/image/${carId}/${imageName}`, options) as Observable<Blob>;
