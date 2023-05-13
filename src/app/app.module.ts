@@ -34,7 +34,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { EditCarComponent } from './components/admin/edit-car/edit-car.component';
-import { RentCarComponent } from './components/car/rent-car/rent-car.component';
+import { OurFleetComponent } from './components/car/our-fleet/our-fleet.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
@@ -49,7 +49,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     ForbiddenComponent,
     AddCarComponent,
     EditCarComponent,
-    RentCarComponent
+    OurFleetComponent
   ],
   imports: [
     BrowserModule,

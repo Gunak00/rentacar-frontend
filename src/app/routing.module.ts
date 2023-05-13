@@ -10,7 +10,7 @@ import {AuthGuard} from "./components/user/service/auth.guard";
 import {ForbiddenComponent} from "./components/forbidden/forbidden.component";
 import {AddCarComponent} from "./components/admin/add-car/add-car.component";
 import {EditCarComponent} from "./components/admin/edit-car/edit-car.component";
-import {RentCarComponent} from "./components/car/rent-car/rent-car.component";
+import {OurFleetComponent} from "./components/car/our-fleet/our-fleet.component";
 
 
 const routes: Routes = [
@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'forbidden', component: ForbiddenComponent },
-  { path: 'rentCar', component: RentCarComponent },
+  { path: 'ourFleet', component: OurFleetComponent },
   { path: 'user', component: UserComponent, canActivate:[AuthGuard], data:{role: 'ROLE_USER'} },
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{role: 'ROLE_ADMIN'} },
   { path: 'add', component: AddCarComponent, canActivate:[AuthGuard], data:{role: 'ROLE_ADMIN'} },

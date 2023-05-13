@@ -3,8 +3,6 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title><b>{{car.name}} {{car.model}}</b></mat-card-title>
-        <mat-card-title><b>{{car.priceShortTerm}}</b> zł. za dzień</mat-card-title>
-        <mat-card-subtitle>Wynajem krótkoterminowy</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image [src]="car.imageSafeUrl" alt="Image of {{car.name}}" height="270px">
       <mat-card-content>
@@ -14,8 +12,6 @@
               <mat-list-item><span>Kategoria:</span></mat-list-item>
               <mat-list-item><span>Rok produkcji:</span></mat-list-item>
               <mat-list-item><span>Liczba osób:</span></mat-list-item>
-              <mat-list-item><span>Klimatyzacja:</span></mat-list-item>
-              <mat-list-item><span>Paliwo:</span></mat-list-item>
             </mat-list>
           </mat-grid-tile>
           <mat-grid-tile>
@@ -23,32 +19,26 @@
               <mat-list-item><span><b>{{car.category}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.manufactureYear}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.numberOfPeople}}</b></span></mat-list-item>
-              <mat-list-item><span><b>{{car.airCon}}</b></span></mat-list-item>
-              <mat-list-item><span><b>{{car.fuel}}</b></span></mat-list-item>
             </mat-list>
           </mat-grid-tile>
           <mat-grid-tile>
             <mat-list style="text-align: right;">
-              <mat-list-item><span>Skrzynia biegów:</span></mat-list-item>
-              <mat-list-item><span>Liczba drzwi:</span></mat-list-item>
               <mat-list-item><span>Silnik:</span></mat-list-item>
+              <mat-list-item><span>Paliwo:</span></mat-list-item>
               <mat-list-item><span>Napęd:</span></mat-list-item>
-              <mat-list-item><span>Czy dostępny:</span></mat-list-item>
             </mat-list>
           </mat-grid-tile>
           <mat-grid-tile>
             <mat-list>
-              <mat-list-item><span><b>{{car.gearbox}}</b></span></mat-list-item>
-              <mat-list-item><span><b>{{car.numberOfDoor}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.engineSize}}</b></span></mat-list-item>
+              <mat-list-item><span><b>{{car.fuel}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.driveType}}</b></span></mat-list-item>
-              <mat-list-item><span><b>{{car.isAvailable}}</b></span></mat-list-item>
             </mat-list>
           </mat-grid-tile>
         </mat-grid-list>
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-raised-button color="accent">Wynajmij</button>
+        <button mat-raised-button color="accent">Sprawdź</button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>

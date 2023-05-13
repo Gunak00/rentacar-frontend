@@ -6,10 +6,10 @@ import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-rent-car',
-  templateUrl: './rent-car.component.html',
-  styleUrls: ['./rent-car.component.css']
+  templateUrl: './our-fleet.component.html',
+  styleUrls: ['./our-fleet.component.css']
 })
-export class RentCarComponent implements OnInit {
+export class OurFleetComponent implements OnInit {
 
   // public imageUrl: SafeUrl;
   public car: Car;
