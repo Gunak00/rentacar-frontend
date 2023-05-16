@@ -8,8 +8,9 @@
   <!--  <a mat-button class="navBtnMargin">Wynajem auta</a>-->
   <button mat-button [matMenuTriggerFor]="menuRent">Wynajem auta</button>
   <mat-menu #menuRent="matMenu" class="matMenuCustomize">
-    <button mat-menu-item>Krótkoterminowy</button>
-    <button mat-menu-item>Długoterminowy</button>
+    <button mat-menu-item (click)="setCategory('Small')" routerLink="/carRental">Samochody małe</button>
+    <button mat-menu-item (click)="setCategory('Medium')" routerLink="/carRental">Samochody średnie</button>
+    <button mat-menu-item (click)="setCategory('Luxury')" routerLink="/carRental">Samochody luksusowe</button>
   </mat-menu>
 
   <a mat-button class="navBtnMargin" routerLink="/ourFleet">Nasza flota</a>

@@ -11,6 +11,7 @@ import {ForbiddenComponent} from "./components/forbidden/forbidden.component";
 import {AddCarComponent} from "./components/admin/add-car/add-car.component";
 import {EditCarComponent} from "./components/admin/edit-car/edit-car.component";
 import {OurFleetComponent} from "./components/car/our-fleet/our-fleet.component";
+import {CarRentalComponent} from "./components/car/car-rental/car-rental.component";
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'forbidden', component: ForbiddenComponent },
   { path: 'ourFleet', component: OurFleetComponent },
+  { path: 'carRental', component: CarRentalComponent },
   { path: 'user', component: UserComponent, canActivate:[AuthGuard], data:{role: 'ROLE_USER'} },
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{role: 'ROLE_ADMIN'} },
   { path: 'add', component: AddCarComponent, canActivate:[AuthGuard], data:{role: 'ROLE_ADMIN'} },
