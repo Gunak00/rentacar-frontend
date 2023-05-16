@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 export class HomePageComponent{
 
 
-  constructor() {
+  constructor(private router: Router, private carService: CarService) {
   }
 
   public goToMyElement(){
@@ -20,5 +20,10 @@ export class HomePageComponent{
     if(element){
       element.scrollIntoView();
     }
+  }
+
+  public goToProperCarRental(category: string){
+    this.carService.setCurrentCategory(category);
+    this.router.navigate(['carRental']).then();
   }
 }

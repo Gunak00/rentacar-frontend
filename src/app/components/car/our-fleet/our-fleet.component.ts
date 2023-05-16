@@ -3,6 +3,7 @@ import {CarService} from "../service/car.service";
 import {Car} from "../model/car";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-rent-car',
@@ -17,7 +18,7 @@ export class OurFleetComponent implements OnInit {
   public defaultImage: string = "../../../assets/images/home-page/small.jpg";
 
 
-  constructor(private carService: CarService, private sanitizer: DomSanitizer) {
+  constructor(private carService: CarService, private sanitizer: DomSanitizer, private router: Router) {
 
   }
 
@@ -53,6 +54,11 @@ export class OurFleetComponent implements OnInit {
         }
       }
     )
+  }
+
+  public goToProperCarRental(category: string){
+    this.carService.setCurrentCategory(category);
+    this.router.navigate(['carRental']).then();
   }
 
 }
