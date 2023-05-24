@@ -16,7 +16,7 @@
           </mat-grid-tile>
           <mat-grid-tile>
             <mat-list>
-              <mat-list-item><span><b>{{car.category}}</b></span></mat-list-item>
+              <mat-list-item><span><b>{{getReadableValueOfCategories(car.category)}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.manufactureYear}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.numberOfPeople}}</b></span></mat-list-item>
             </mat-list>
@@ -31,8 +31,8 @@
           <mat-grid-tile>
             <mat-list>
               <mat-list-item><span><b>{{car.engineSize}}</b></span></mat-list-item>
-              <mat-list-item><span><b>{{car.fuel}}</b></span></mat-list-item>
-              <mat-list-item><span><b>{{car.driveType}}</b></span></mat-list-item>
+              <mat-list-item><span><b>{{getReadableValueOfFuel(car.fuel)}}</b></span></mat-list-item>
+              <mat-list-item><span><b>{{getReadableValueOfDrive(car.driveType)}}</b></span></mat-list-item>
             </mat-list>
           </mat-grid-tile>
         </mat-grid-list>

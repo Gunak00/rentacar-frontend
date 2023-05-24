@@ -3,6 +3,11 @@ import {CarService} from "../service/car.service";
 import {Car} from "../model/car";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 import {HttpErrorResponse} from "@angular/common/http";
+import {carFuelTypeMap} from "../enums/carFuelTypeMap";
+import {CarFuelType} from "../enums/carFuelType";
+import {CarDriveType} from "../enums/carDriveType";
+import {CarGearboxType} from "../enums/carGearboxType";
+import {carGearboxTypeMap} from "../enums/carGearboxTypeMap";
 
 @Component({
   selector: 'app-car-rental',
@@ -57,6 +62,22 @@ export class CarRentalComponent implements OnInit {
         urlCreator.createObjectURL(blob));
       car.imageSafeUrl = imageUrl;
     })
+  }
+
+  public getReadableValueOfFuel(carFuelType: CarFuelType){
+    return this.carService.getReadableValueOfFuel(carFuelType);
+  }
+
+  public getReadableValueOfDrive(carDriveType: CarDriveType){
+    return this.carService.getReadableValueOfDrive(carDriveType);
+  }
+
+  public getReadableValueOfGearbox(carGearboxType: CarGearboxType){
+    return this.carService.getReadableValueOfGearbox(carGearboxType);
+  }
+
+  public getReadableValueOfCategories(category: string){
+    return this.carService.getReadableValueOfCategories(category);
   }
 
 }

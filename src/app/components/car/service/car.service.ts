@@ -3,6 +3,13 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Car} from "../model/car";
 import {environment} from "../../../environments/environment";
+import {CarFuelType} from "../enums/carFuelType";
+import {carFuelTypeMap} from "../enums/carFuelTypeMap";
+import {CarDriveType} from "../enums/carDriveType";
+import {carDriveTypeMap} from "../enums/carDriveTypeMap";
+import {CarGearboxType} from "../enums/carGearboxType";
+import {carGearboxTypeMap} from "../enums/carGearboxTypeMap";
+import {carCategoryMap} from "../enums/carCategoryMap";
 
 @Injectable({
   providedIn: 'root'
@@ -57,4 +64,20 @@ export class CarService {
   public getCurrentCategory(): BehaviorSubject<string> {
     return this._currentCategory;
   }
+
+  public getReadableValueOfFuel(carFuelType: CarFuelType){
+    return carFuelTypeMap[carFuelType] || carFuelType;
+  }
+  public getReadableValueOfDrive(carDriveType: CarDriveType){
+    return carDriveTypeMap[carDriveType] || carDriveType;
+  }
+
+  public getReadableValueOfGearbox(carGearboxType: CarGearboxType){
+    return carGearboxTypeMap[carGearboxType] || carGearboxType;
+  }
+
+  public getReadableValueOfCategories(category: string){
+    return carCategoryMap[category] || category;
+  }
+
 }

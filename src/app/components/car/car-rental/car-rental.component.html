@@ -30,11 +30,12 @@
           </mat-grid-tile>
           <mat-grid-tile class="myHeight">
             <mat-list>
-              <mat-list-item><span><b>{{car.category}}</b></span></mat-list-item>
+              <mat-list-item><span><b>{{getReadableValueOfCategories(car.category)}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.manufactureYear}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.numberOfPeople}}</b></span></mat-list-item>
-              <mat-list-item><span><b>{{car.airCon}}</b></span></mat-list-item>
-              <mat-list-item><span><b>{{car.fuel}}</b></span></mat-list-item>
+              <mat-list-item><span>    <b *ngIf="car.airCon; else noAirCon">Tak</b>
+              <ng-template #noAirCon><b>Nie</b></ng-template></span></mat-list-item>
+              <mat-list-item><span><b>{{getReadableValueOfFuel(car.fuel)}}</b></span></mat-list-item>
             </mat-list>
           </mat-grid-tile>
           <mat-grid-tile class="myHeight">
@@ -48,10 +49,10 @@
           </mat-grid-tile>
           <mat-grid-tile class="myHeight">
             <mat-list>
-              <mat-list-item><span><b>{{car.gearbox}}</b></span></mat-list-item>
+              <mat-list-item><span><b>{{getReadableValueOfGearbox(car.gearbox)}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.numberOfDoor}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.engineSize}}</b></span></mat-list-item>
-              <mat-list-item><span><b>{{car.driveType}}</b></span></mat-list-item>
+              <mat-list-item><span><b>{{getReadableValueOfDrive(car.driveType)}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.isAvailable}}</b></span></mat-list-item>
             </mat-list>
           </mat-grid-tile>
