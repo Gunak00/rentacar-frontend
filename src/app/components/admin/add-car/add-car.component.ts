@@ -36,7 +36,8 @@ export class AddCarComponent implements OnInit{
       gearbox: new FormControl('', [Validators.required]),
       numberOfDoor: new FormControl('', [Validators.required]),
       engineSize: new FormControl('', [Validators.required]),
-      driveType: new FormControl('', [Validators.required])
+      driveType: new FormControl('', [Validators.required]),
+      isAvailable: new FormControl(true)
     })
   }
 

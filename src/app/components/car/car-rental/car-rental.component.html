@@ -33,7 +33,7 @@
               <mat-list-item><span><b>{{getReadableValueOfCategories(car.category)}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.manufactureYear}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.numberOfPeople}}</b></span></mat-list-item>
-              <mat-list-item><span>    <b *ngIf="car.airCon; else noAirCon">Tak</b>
+              <mat-list-item><span><b *ngIf="car.airCon; else noAirCon">Tak</b>
               <ng-template #noAirCon><b>Nie</b></ng-template></span></mat-list-item>
               <mat-list-item><span><b>{{getReadableValueOfFuel(car.fuel)}}</b></span></mat-list-item>
             </mat-list>
@@ -53,7 +53,8 @@
               <mat-list-item><span><b>{{car.numberOfDoor}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{car.engineSize}}</b></span></mat-list-item>
               <mat-list-item><span><b>{{getReadableValueOfDrive(car.driveType)}}</b></span></mat-list-item>
-              <mat-list-item><span><b>{{car.isAvailable}}</b></span></mat-list-item>
+              <mat-list-item><span><b *ngIf="car.isAvailable; else noAvailable">Tak</b>
+              <ng-template #noAvailable><b>Nie</b></ng-template></span></mat-list-item>
             </mat-list>
           </mat-grid-tile>
         </mat-grid-list>
