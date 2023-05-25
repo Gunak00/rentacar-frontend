@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Car} from "../car/model/car";
-import {ReservationService} from "./service/reservation.service";
+import {CarService} from "../car/service/car.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-reservation',
@@ -9,15 +10,19 @@ import {ReservationService} from "./service/reservation.service";
 })
 export class ReservationComponent implements OnInit{
 
+  private carId: number;
   public car: Car;
 
-  constructor(private reservationService: ReservationService) {
-    this.car = this.reservationService.getSelectedCar();
-    console.log(this.car);
-  }
+  constructor(private carService: CarService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.car = this.reservationService.getSelectedCar();
+    this.route.queryParams.subscribe(params => {
+      this.carId = +params['id'];
+    })
+    this.carService.getCar(this.carId).subscribe(car => {
+      this.car = car;
+      console.log(this.car);
+    });
   }
 
 }

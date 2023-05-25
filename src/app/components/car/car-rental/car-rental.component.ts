@@ -24,8 +24,7 @@ export class CarRentalComponent implements OnInit {
   public filteredCars: Car[] = [];
   public defaultImage: string = "../../../assets/images/home-page/small.jpg";
 
-  constructor(private carService: CarService, private sanitizer: DomSanitizer, private router: Router,
-              private reservationService: ReservationService) {
+  constructor(private carService: CarService, private sanitizer: DomSanitizer, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -83,9 +82,8 @@ export class CarRentalComponent implements OnInit {
     return this.carService.getReadableValueOfCategories(category);
   }
 
-  public goToReservationProcess(car: Car) {
-    this.reservationService.setSelectedCar(car);
-    this.router.navigateByUrl('/reservation').then();
+  public goToReservationProcess(carId: number) {
+    this.router.navigate(['/reservation'], {queryParams: {id: carId}}).then();
   }
 
 }
