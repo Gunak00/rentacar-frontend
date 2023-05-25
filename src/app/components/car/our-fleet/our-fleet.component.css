@@ -1,5 +1,5 @@
 mat-card{
-  width: 580px;
+  min-width: 580px;
   background-color: #3849a2;
   color: white;
 }

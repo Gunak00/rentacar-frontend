@@ -1,0 +1,31 @@
+.full-width {
+  width: 100%;
+}
+
+mat-card{
+  max-width: 70%;
+  margin: 3em auto auto;
+  background-color: #3849a2;
+  color: white;
+}
+
+mat-form-field {
+  margin: 1em 1em auto auto;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between; /* This will create equal space between the elements */
+}
+
+.full-width-grow {
+  flex-grow: 1;
+}
+
+.no-right-margin{
+  margin-right: 0;
+}
+
+.flex-spacer{
+  flex-grow: 1;
+}

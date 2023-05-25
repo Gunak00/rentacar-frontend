@@ -38,6 +38,9 @@ import { OurFleetComponent } from './components/car/our-fleet/our-fleet.componen
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { CarRentalComponent } from './components/car/car-rental/car-rental.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import { CarCardComponent } from './components/car/car-card/car-card.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +56,8 @@ import { ReservationComponent } from './components/reservation/reservation.compo
     EditCarComponent,
     OurFleetComponent,
     CarRentalComponent,
-    ReservationComponent
+    ReservationComponent,
+    CarCardComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +83,9 @@ import { ReservationComponent } from './components/reservation/reservation.compo
     MatSelectModule,
     MatRadioModule,
     MatCheckboxModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDatepickerModule,
+    MatMomentDateModule
   ],
   providers: [
     AuthGuard,
