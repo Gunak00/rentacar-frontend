@@ -29,3 +29,23 @@ mat-form-field {
 .flex-spacer{
   flex-grow: 1;
 }
+
+.car-card{
+  width: 580px;
+  background-color: #3849a2;
+  color: white;
+}
+
+mat-card-header{
+  margin-bottom: 1em;
+}
+
+span{
+  color: white;
+}
+
+.myHeight{
+  height: 100px;
+}
+
+

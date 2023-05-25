@@ -49,7 +49,71 @@
 
       </div>
 
-      <button mat-raised-button color="primary" type="submit">Submit</button>
+<!--      <button mat-raised-button color="primary" type="submit">Submit</button>-->
     </form>
   </mat-card-content>
 </mat-card>
+
+<mat-card class="car-card" *ngIf="car">
+  <mat-card-title style="text-align: center; margin-top: 1em;" ><b>Rezerwowane auto</b>
+  </mat-card-title>
+
+  <mat-card-header>
+    <mat-card-title><span><b>{{car.name}} {{car.model}}</b></span></mat-card-title>
+<!--    <div class="column">-->
+<!--      <mat-card-title><span><b>{{car.priceShortTerm}}</b> zł. za dzień</span></mat-card-title>-->
+<!--      <mat-card-subtitle><span style="color: lightblue">Wynajem krótkoterminowy</span></mat-card-subtitle>-->
+<!--    </div>-->
+<!--    <div class="column" style="text-align: end">-->
+<!--      <mat-card-title><span><b>{{car.priceLongTerm}}</b> zł. za dzień</span></mat-card-title>-->
+<!--      <mat-card-subtitle><span style="color: lightblue">Wynajem długoterminowy</span></mat-card-subtitle>-->
+<!--    </div>-->
+  </mat-card-header>
+
+  <img mat-card-image [src]="car.imageSafeUrl" alt="Image of {{car.name}}" height="270px">
+
+  <mat-card-content>
+    <mat-grid-list cols="4" class="myHeight">
+      <mat-grid-tile class="myHeight">
+        <mat-list style="text-align: right">
+          <mat-list-item><span>Kategoria:</span></mat-list-item>
+          <mat-list-item><span>Rok produkcji:</span></mat-list-item>
+          <mat-list-item><span>Liczba osób:</span></mat-list-item>
+          <mat-list-item><span>Klimatyzacja:</span></mat-list-item>
+          <mat-list-item><span>Paliwo:</span></mat-list-item>
+        </mat-list>
+      </mat-grid-tile>
+      <mat-grid-tile class="myHeight">
+        <mat-list>
+          <mat-list-item><span><b>{{getReadableValueOfCategories(car.category)}}</b></span></mat-list-item>
+          <mat-list-item><span><b>{{car.manufactureYear}}</b></span></mat-list-item>
+          <mat-list-item><span><b>{{car.numberOfPeople}}</b></span></mat-list-item>
+          <mat-list-item><span><b *ngIf="car.airCon; else noAirCon">Tak</b>
+              <ng-template #noAirCon><b>Nie</b></ng-template></span></mat-list-item>
+          <mat-list-item><span><b>{{getReadableValueOfFuel(car.fuel)}}</b></span></mat-list-item>
+        </mat-list>
+      </mat-grid-tile>
+      <mat-grid-tile class="myHeight">
+        <mat-list style="text-align: right;">
+          <mat-list-item><span>Skrzynia biegów:</span></mat-list-item>
+          <mat-list-item><span>Liczba drzwi:</span></mat-list-item>
+          <mat-list-item><span>Silnik:</span></mat-list-item>
+          <mat-list-item><span>Napęd:</span></mat-list-item>
+          <mat-list-item><span>Czy dostępny:</span></mat-list-item>
+        </mat-list>
+      </mat-grid-tile>
+      <mat-grid-tile class="myHeight">
+        <mat-list>
+          <mat-list-item><span><b>{{getReadableValueOfGearbox(car.gearbox)}}</b></span></mat-list-item>
+          <mat-list-item><span><b>{{car.numberOfDoor}}</b></span></mat-list-item>
+          <mat-list-item><span><b>{{car.engineSize}}</b></span></mat-list-item>
+          <mat-list-item><span><b>{{getReadableValueOfDrive(car.driveType)}}</b></span></mat-list-item>
+          <mat-list-item><span><b *ngIf="car.isAvailable; else noAvailable">Tak</b>
+              <ng-template #noAvailable><b>Nie</b></ng-template></span></mat-list-item>
+        </mat-list>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-card-content>
+</mat-card>
+
+
