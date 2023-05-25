@@ -12,6 +12,7 @@ import {AddCarComponent} from "./components/admin/add-car/add-car.component";
 import {EditCarComponent} from "./components/admin/edit-car/edit-car.component";
 import {OurFleetComponent} from "./components/car/our-fleet/our-fleet.component";
 import {CarRentalComponent} from "./components/car/car-rental/car-rental.component";
+import {ReservationComponent} from "./components/reservation/reservation.component";
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{role: 'ROLE_ADMIN'} },
   { path: 'add', component: AddCarComponent, canActivate:[AuthGuard], data:{role: 'ROLE_ADMIN'} },
   { path: 'edit', component: EditCarComponent, canActivate:[AuthGuard], data:{role: 'ROLE_ADMIN'} },
+  { path: 'reservation', component: ReservationComponent },
   { path: '**', redirectTo: 'home' }
 ];
 

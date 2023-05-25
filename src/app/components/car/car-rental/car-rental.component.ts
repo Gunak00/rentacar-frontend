@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, DoCheck, EventEmitter, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {CarService} from "../service/car.service";
 import {Car} from "../model/car";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
@@ -8,6 +8,8 @@ import {CarFuelType} from "../enums/carFuelType";
 import {CarDriveType} from "../enums/carDriveType";
 import {CarGearboxType} from "../enums/carGearboxType";
 import {carGearboxTypeMap} from "../enums/carGearboxTypeMap";
+import {Router} from "@angular/router";
+import {ReservationService} from "../../reservation/service/reservation.service";
 
 @Component({
   selector: 'app-car-rental',
@@ -22,7 +24,8 @@ export class CarRentalComponent implements OnInit {
   public filteredCars: Car[] = [];
   public defaultImage: string = "../../../assets/images/home-page/small.jpg";
 
-  constructor(private carService: CarService, private sanitizer: DomSanitizer) {
+  constructor(private carService: CarService, private sanitizer: DomSanitizer, private router: Router,
+              private reservationService: ReservationService) {
   }
 
   ngOnInit(): void {
@@ -64,20 +67,25 @@ export class CarRentalComponent implements OnInit {
     })
   }
 
-  public getReadableValueOfFuel(carFuelType: CarFuelType){
+  public getReadableValueOfFuel(carFuelType: CarFuelType) {
     return this.carService.getReadableValueOfFuel(carFuelType);
   }
 
-  public getReadableValueOfDrive(carDriveType: CarDriveType){
+  public getReadableValueOfDrive(carDriveType: CarDriveType) {
     return this.carService.getReadableValueOfDrive(carDriveType);
   }
 
-  public getReadableValueOfGearbox(carGearboxType: CarGearboxType){
+  public getReadableValueOfGearbox(carGearboxType: CarGearboxType) {
     return this.carService.getReadableValueOfGearbox(carGearboxType);
   }
 
-  public getReadableValueOfCategories(category: string){
+  public getReadableValueOfCategories(category: string) {
     return this.carService.getReadableValueOfCategories(category);
+  }
+
+  public goToReservationProcess(car: Car) {
+    this.reservationService.setSelectedCar(car);
+    this.router.navigateByUrl('/reservation').then();
   }
 
 }

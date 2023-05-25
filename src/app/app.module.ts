@@ -37,6 +37,7 @@ import { EditCarComponent } from './components/admin/edit-car/edit-car.component
 import { OurFleetComponent } from './components/car/our-fleet/our-fleet.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { CarRentalComponent } from './components/car/car-rental/car-rental.component';
+import { ReservationComponent } from './components/reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { CarRentalComponent } from './components/car/car-rental/car-rental.compo
     AddCarComponent,
     EditCarComponent,
     OurFleetComponent,
-    CarRentalComponent
+    CarRentalComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
