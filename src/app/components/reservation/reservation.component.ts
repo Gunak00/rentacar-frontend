@@ -8,6 +8,8 @@ import {CarFuelType} from "../car/enums/carFuelType";
 import {CarDriveType} from "../car/enums/carDriveType";
 import {CarGearboxType} from "../car/enums/carGearboxType";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {Reservation} from "./reservation";
+import {DatePipe} from "@angular/common";
 
 
 @Component({
@@ -15,17 +17,18 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css']
 })
+
+
 export class ReservationComponent implements OnInit{
 
   private carId: number;
 
-  public numberDaysToLongTermPrice = 10;
+  readonly NUMBER_DAYS_TO_LONG_TERM_PRICE: number  = 10;
+  public isSummary: boolean = false;
+  public summary: Reservation[] = [];
   public car: Car;
+  public reservation: Reservation = new Reservation(undefined, '', '',0, 0, 0, '', '', '', '');
   public formGroup: FormGroup;
-  public numberOfDays: number = 0;
-  public price: number = 0;
-  public startDate: string;
-  public endDate: string;
   public pickUpLocations: string[] = ['Lublin, ul. Kowalska 15', "Lublin, ul. Brzozowa 2", "Lublin, al. Solidarności 75"];
   public returnLocations: string[] = this.pickUpLocations;
   public defaultImage: string = "../../../assets/images/home-page/small.jpg";
@@ -38,6 +41,7 @@ export class ReservationComponent implements OnInit{
       dateRangeStart: [''],
       dateRangeEnd: [''],
     });
+    this.summary.push(this.reservation);
   }
 
   ngOnInit(): void {
@@ -47,26 +51,44 @@ export class ReservationComponent implements OnInit{
 
     this.carService.getCar(this.carId).subscribe(car => {
       this.car = car;
+      this.reservation.carId = this.car.id;
+      this.reservation.carName = this.car.name;
+      this.reservation.carModel = this.car.model;
       this.getCarImage(this.car);
       console.log(this.car);
     });
 
+    this.formGroup.get('pickUpLocation').valueChanges.subscribe(location => {
+      this.reservation.pickUpLocation = location;
+    });
+
+    this.formGroup.get('returnLocation').valueChanges.subscribe(location => {
+      this.reservation.returnLocation = location;
+    });
 
     this.formGroup.get('dateRangeStart').valueChanges.subscribe(start => {
-      this.startDate = start;
+      this.reservation.startDate = start;
     });
 
     this.formGroup.get('dateRangeEnd').valueChanges.subscribe(end => {
-      this.endDate = end;
-      if (this.endDate && this.startDate){
-        this.numberOfDays = moment(this.endDate).diff(moment(this.startDate), 'days') + 1;
-        this.price = this.calculatePrice(this.numberOfDays);
+      this.reservation.endDate = end;
+      if (this.reservation.endDate && this.reservation.startDate){
+        this.reservation.numberOfDays = moment(this.reservation.endDate).diff(moment(this.reservation.startDate), 'days') + 1;
+        this.reservation.priceForDay = this.calculatePrice(this.reservation.numberOfDays);
+        this.reservation.priceAll = this.reservation.numberOfDays * this.reservation.priceForDay;
+        this.isSummary = true;
+        let datePipe = new DatePipe('en-US');
+        let date = new Date(this.reservation.startDate);
+        this.reservation.startDate = datePipe.transform(date, 'dd/MM/yyyy');
+        date = new Date(this.reservation.endDate);
+        this.reservation.endDate = datePipe.transform(date, 'dd/MM/yyyy');
       }
     })
   }
 
   public submitForm(){
     console.log(this.formGroup.value);
+    console.log(this.reservation);
   }
 
   public getReadableValueOfFuel(carFuelType: CarFuelType) {
@@ -100,7 +122,7 @@ export class ReservationComponent implements OnInit{
   }
 
   private calculatePrice(days: number){
-    if (days > this.numberDaysToLongTermPrice)
+    if (days > this.NUMBER_DAYS_TO_LONG_TERM_PRICE)
       return this.car.priceLongTerm;
     return this.car.priceShortTerm;
   }

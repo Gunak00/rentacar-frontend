@@ -38,36 +38,27 @@
         <div>
           <mat-form-field appearance="fill">
             <mat-label>Wybrana liczba dni</mat-label>
-            <input matInput readonly [value]="numberOfDays.toString()">
+            <input matInput readonly [value]="this.reservation.numberOfDays.toString()">
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="no-right-margin">
             <mat-label>Cena za dzień</mat-label>
-            <input matInput readonly [value]="price.toString()">
+            <input matInput readonly [value]="this.reservation.priceForDay.toString()">
           </mat-form-field>
         </div>
 
       </div>
 
-<!--      <button mat-raised-button color="primary" type="submit">Submit</button>-->
     </form>
   </mat-card-content>
 </mat-card>
 
 <mat-card class="car-card" *ngIf="car">
-  <mat-card-title style="text-align: center; margin-top: 1em;" ><b>Rezerwowane auto</b>
+  <mat-card-title style="text-align: center; margin-top: 1em;"><b>Rezerwowane auto</b>
   </mat-card-title>
 
   <mat-card-header>
     <mat-card-title><span><b>{{car.name}} {{car.model}}</b></span></mat-card-title>
-<!--    <div class="column">-->
-<!--      <mat-card-title><span><b>{{car.priceShortTerm}}</b> zł. za dzień</span></mat-card-title>-->
-<!--      <mat-card-subtitle><span style="color: lightblue">Wynajem krótkoterminowy</span></mat-card-subtitle>-->
-<!--    </div>-->
-<!--    <div class="column" style="text-align: end">-->
-<!--      <mat-card-title><span><b>{{car.priceLongTerm}}</b> zł. za dzień</span></mat-card-title>-->
-<!--      <mat-card-subtitle><span style="color: lightblue">Wynajem długoterminowy</span></mat-card-subtitle>-->
-<!--    </div>-->
   </mat-card-header>
 
   <img mat-card-image [src]="car.imageSafeUrl" alt="Image of {{car.name}}" height="270px">
@@ -116,4 +107,98 @@
   </mat-card-content>
 </mat-card>
 
+<div style="padding-bottom: 2px" *ngIf="isSummary">
+  <mat-card class="mat-card-summary">
 
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-list fxFlex="50">
+        <mat-card-header>
+          <mat-card-title>Podsumowanie:</mat-card-title>
+        </mat-card-header>
+        <div>
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <h3 fxFlex="30">Nazwa:</h3>
+              <h3 fxFlex="70" style="text-align: right">
+                <b>{{this.reservation.carName}} {{this.reservation.carModel}}</b></h3>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+
+        <div>
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <h3 fxFlex="30">Ilość dni:</h3>
+              <h3 fxFlex="70" style="text-align: right"><b>{{this.reservation.numberOfDays}}</b></h3>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+
+        <div>
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <h3 fxFlex="30">Cena za dobę:</h3>
+              <h3 fxFlex="70" style="text-align: right"><b>{{this.reservation.priceForDay}}</b></h3>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+
+        <div>
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <h3 fxFlex="30">Cena razem:</h3>
+              <h3 fxFlex="70" style="text-align: right"><b>{{this.reservation.priceAll}}</b></h3>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+
+        <div>
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <h3 fxFlex="30">Miejsce odbioru:</h3>
+              <h3 fxFlex="70" style="text-align: right"><b>{{this.reservation.pickUpLocation}}</b></h3>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+
+        <div>
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <h3 fxFlex="30">Miejsce zwrotu:</h3>
+              <h3 fxFlex="70" style="text-align: right"><b>{{this.reservation.returnLocation}}</b></h3>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+
+        <div>
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <h3 fxFlex="30">Data odbioru:</h3>
+              <h3 fxFlex="70" style="text-align: right"><b>{{this.reservation.startDate}}</b></h3>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+
+        <div>
+          <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <h3 fxFlex="30">Data zwrotu:</h3>
+              <h3 fxFlex="70" style="text-align: right"><b>{{this.reservation.endDate}}</b></h3>
+            </div>
+          </mat-list-item>
+        </div>
+
+      </mat-list>
+      <div fxFlex="50" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="accent" class="large-button">REZERWUJĘ</button>
+      </div>
+    </div>
+  </mat-card>
+</div>

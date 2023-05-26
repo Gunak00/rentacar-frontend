@@ -48,4 +48,25 @@ span{
   height: 100px;
 }
 
+h3{
+  color: white;
+}
+
+.mat-card-summary{
+  max-width: 70%;
+  margin: 3em auto 100px;
+  background-color: #3849a2;
+  color: white;
+}
+
+mat-divider{
+  background-color: lightgray;
+  max-width: 100%;
+}
+
+.large-button {
+  font-size: 20px; /* increase the font size */
+  padding: 15px 30px; /* increase the padding */
+  min-height: 80px;
+}
 

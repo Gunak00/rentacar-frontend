@@ -1,0 +1,29 @@
+mat-card{
+  width: 580px;
+  background-color: #3849a2;
+  color: white;
+}
+
+mat-card-header{
+  margin-bottom: 1em;
+}
+
+span{
+  color: white;
+}
+
+.myHeight{
+  height: 120px;
+}
+
+button{
+  margin: 0 10px 10px 0;
+  min-width: 120px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
