@@ -3,6 +3,11 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../user/service/user.service";
 import {User} from "../user/model/user";
 import {HttpErrorResponse} from "@angular/common/http";
+import {catchError, of} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
+import {ConfirmRegisterDialogComponent} from "./confirm-register-dialog/confirm-register-dialog.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -13,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserService) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private dialog: MatDialog, private router: Router) {
   }
 
   ngOnInit() {
@@ -29,8 +34,18 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     // Handle form submission here
-    this.userService.addUser(this.registerForm.value).subscribe(response =>{
-      console.log(response);
-    })
+    this.userService.addUser(this.registerForm.value)
+      .pipe(
+        catchError(err => {
+          this.dialog.open(ErrorDialogComponent);
+          return of(err);
+        }))
+      .subscribe(response => {
+        console.log(response)
+        const matDialogRef = this.dialog.open(ConfirmRegisterDialogComponent);
+        matDialogRef.afterClosed().subscribe(() => {
+          this.router.navigateByUrl('/login').then(null);
+        })
+      })
   }
 }
