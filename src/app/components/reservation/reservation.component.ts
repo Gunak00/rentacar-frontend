@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Car} from "../car/model/car";
 import {CarService} from "../car/service/car.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import * as moment from 'moment';
 import {CarFuelType} from "../car/enums/carFuelType";
@@ -12,6 +12,8 @@ import {DatePipe} from "@angular/common";
 import {Reservation} from "./model/reservation";
 import {ReservationService} from "./service/reservation.service";
 import {AuthService} from "../user/service/auth.service";
+import {MatDialog} from "@angular/material/dialog";
+import {ConfirmReservationDialogComponent} from "./confirm-reservation-dialog/confirm-reservation-dialog.component";
 
 
 @Component({
@@ -35,7 +37,8 @@ export class ReservationComponent implements OnInit{
   public defaultImage: string = "../../../assets/images/home-page/small.jpg";
 
   constructor(private carService: CarService, private route: ActivatedRoute, private formBuilder: FormBuilder,
-              private sanitizer: DomSanitizer, private reservationService: ReservationService, private authService: AuthService) {
+              private sanitizer: DomSanitizer, private reservationService: ReservationService,
+              private authService: AuthService, public dialog: MatDialog, private router: Router) {
     this.formGroup = this.formBuilder.group({
       pickUpLocation: [''],
       returnLocation: [''],
@@ -93,7 +96,15 @@ export class ReservationComponent implements OnInit{
     this.reservationService.sendReservation(reservation).subscribe(value => {
       console.log(value);
     });
-    console.log("DUUUUUPA");
+    this.openDialog();
+  }
+
+  private openDialog(){
+    const dialogRef = this.dialog.open(ConfirmReservationDialogComponent)
+
+    dialogRef.afterClosed().subscribe(result =>{
+      this.router.navigateByUrl('/home').then(null);
+    })
   }
 
   public submitForm(){

@@ -41,6 +41,10 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import { CarCardComponent } from './components/car/car-card/car-card.component';
+import { ConfirmReservationDialogComponent } from './components/reservation/confirm-reservation-dialog/confirm-reservation-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { ConfirmRegisterDialogComponent } from './components/register/confirm-register-dialog/confirm-register-dialog.component';
+import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -57,36 +61,40 @@ import { CarCardComponent } from './components/car/car-card/car-card.component';
     OurFleetComponent,
     CarRentalComponent,
     ReservationComponent,
-    CarCardComponent
+    CarCardComponent,
+    ConfirmReservationDialogComponent,
+    ConfirmRegisterDialogComponent,
+    ErrorDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    RoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatToolbarModule,
-    MatButtonModule,
-    LayoutModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    FormsModule,
-    MatMenuModule,
-    MatCardModule,
-    MatRippleModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatGridListModule,
-    MatTableModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatCheckboxModule,
-    FlexLayoutModule,
-    MatDatepickerModule,
-    MatMomentDateModule
-  ],
+    imports: [
+        BrowserModule,
+        RoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatSlideToggleModule,
+        MatToolbarModule,
+        MatButtonModule,
+        LayoutModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        FormsModule,
+        MatMenuModule,
+        MatCardModule,
+        MatRippleModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatGridListModule,
+        MatTableModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatCheckboxModule,
+        FlexLayoutModule,
+        MatDatepickerModule,
+        MatMomentDateModule,
+        MatDialogModule
+    ],
   providers: [
     AuthGuard,
     {
