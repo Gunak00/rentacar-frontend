@@ -45,6 +45,7 @@ import { ConfirmReservationDialogComponent } from './components/reservation/conf
 import {MatDialogModule} from "@angular/material/dialog";
 import { ConfirmRegisterDialogComponent } from './components/register/confirm-register-dialog/confirm-register-dialog.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { ConfirmAddCarDialogComponent } from './components/admin/add-car/confirm-add-car-dialog/confirm-add-car-dialog.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
     CarCardComponent,
     ConfirmReservationDialogComponent,
     ConfirmRegisterDialogComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    ConfirmAddCarDialogComponent
   ],
     imports: [
         BrowserModule,
