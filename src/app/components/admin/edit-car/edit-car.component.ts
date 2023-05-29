@@ -7,6 +7,11 @@ import {CarGearboxType} from "../../car/enums/carGearboxType";
 import {CarDriveType} from "../../car/enums/carDriveType";
 import {Car} from "../../car/model/car";
 import {ProxyEditCarService} from "./proxy-edit-car.service";
+import {catchError, of} from "rxjs";
+import {ErrorDialogComponent} from "../../error-dialog/error-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
+import {ConfirmAddCarDialogComponent} from "../add-car/confirm-add-car-dialog/confirm-add-car-dialog.component";
+import {ConfirmEditCarDialogComponent} from "./confirm-edit-car-dialog/confirm-edit-car-dialog.component";
 
 @Component({
   selector: 'app-edit-car',
@@ -25,7 +30,8 @@ export class EditCarComponent implements OnInit {
   gearboxTypes = Object.values(CarGearboxType);
   driveTypes = Object.values(CarDriveType);
 
-  constructor(private carService: CarService, private proxyEditCarService: ProxyEditCarService, private formBuilder: FormBuilder) {
+  constructor(private carService: CarService, private proxyEditCarService: ProxyEditCarService,
+              private formBuilder: FormBuilder, private dialog: MatDialog) {
     this.newForm();
     this.editCar = proxyEditCarService.getCar();
     this.fileName = this.editCar.imageUrl;
@@ -64,7 +70,13 @@ export class EditCarComponent implements OnInit {
     this.editCar.engineSize = this.editCarForm.value.engineSize;
     this.editCar.driveType = this.editCarForm.value.driveType;
 
-    this.carService.editCar(this.editCar).subscribe(value => {
+    this.carService.editCar(this.editCar)
+      .pipe(catchError(err => {
+        this.dialog.open(ErrorDialogComponent);
+        return of(err);
+      }))      .subscribe(value => {
+      console.log(value);
+      const matDialogRef = this.dialog.open(ConfirmEditCarDialogComponent);
     });
   }
 
