@@ -1,114 +1,115 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Proces rezerwacji samochodu:</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Miejsce Odbioru</mat-label>
-        <mat-select formControlName="pickUpLocation">
-          <mat-option *ngFor="let location of pickUpLocations" [value]="location">
-            {{location}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+<div style="padding-bottom: 2em">
 
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Miejsce Zwrotu</mat-label>
-        <mat-select formControlName="returnLocation">
-          <mat-option *ngFor="let location of returnLocations" [value]="location">
-            {{location}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <div class="flex-container">
-        <mat-form-field appearance="fill">
-          <mat-label>Zakres dat</mat-label>
-          <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate placeholder="Start date" formControlName="dateRangeStart">
-            <input matEndDate placeholder="End date" formControlName="dateRangeEnd">
-          </mat-date-range-input>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker #picker></mat-date-range-picker>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Proces rezerwacji samochodu:</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Miejsce Odbioru</mat-label>
+          <mat-select formControlName="pickUpLocation">
+            <mat-option *ngFor="let location of pickUpLocations" [value]="location">
+              {{location}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
-        <div class="flex-spacer"></div>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Miejsce Zwrotu</mat-label>
+          <mat-select formControlName="returnLocation">
+            <mat-option *ngFor="let location of returnLocations" [value]="location">
+              {{location}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-        <div>
+        <div class="flex-container">
           <mat-form-field appearance="fill">
-            <mat-label>Wybrana liczba dni</mat-label>
-            <input matInput readonly [value]="this.reservation.numberOfDays.toString()">
+            <mat-label>Zakres dat</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date" formControlName="dateRangeStart">
+              <input matEndDate placeholder="End date" formControlName="dateRangeEnd">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
           </mat-form-field>
 
-          <mat-form-field appearance="fill" class="no-right-margin">
-            <mat-label>Cena za dzień</mat-label>
-            <input matInput readonly [value]="this.reservation.priceForDay.toString()">
-          </mat-form-field>
+          <div class="flex-spacer"></div>
+
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Wybrana liczba dni</mat-label>
+              <input matInput readonly [value]="this.reservation.numberOfDays.toString()">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="no-right-margin">
+              <mat-label>Cena za dzień</mat-label>
+              <input matInput readonly [value]="this.reservation.priceForDay.toString()">
+            </mat-form-field>
+          </div>
+
         </div>
 
-      </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 
-    </form>
-  </mat-card-content>
-</mat-card>
+  <mat-card class="car-card" *ngIf="car">
+    <mat-card-title style="text-align: center; margin-top: 1em;"><b>Rezerwowane auto</b>
+    </mat-card-title>
 
-<mat-card class="car-card" *ngIf="car">
-  <mat-card-title style="text-align: center; margin-top: 1em;"><b>Rezerwowane auto</b>
-  </mat-card-title>
+    <mat-card-header>
+      <mat-card-title><span><b>{{car.name}} {{car.model}}</b></span></mat-card-title>
+    </mat-card-header>
 
-  <mat-card-header>
-    <mat-card-title><span><b>{{car.name}} {{car.model}}</b></span></mat-card-title>
-  </mat-card-header>
+    <img mat-card-image [src]="car.imageSafeUrl" alt="Image of {{car.name}}" height="270px">
 
-  <img mat-card-image [src]="car.imageSafeUrl" alt="Image of {{car.name}}" height="270px">
-
-  <mat-card-content>
-    <mat-grid-list cols="4" class="myHeight">
-      <mat-grid-tile class="myHeight">
-        <mat-list style="text-align: right">
-          <mat-list-item><span>Kategoria:</span></mat-list-item>
-          <mat-list-item><span>Rok produkcji:</span></mat-list-item>
-          <mat-list-item><span>Liczba osób:</span></mat-list-item>
-          <mat-list-item><span>Klimatyzacja:</span></mat-list-item>
-          <mat-list-item><span>Paliwo:</span></mat-list-item>
-        </mat-list>
-      </mat-grid-tile>
-      <mat-grid-tile class="myHeight">
-        <mat-list>
-          <mat-list-item><span><b>{{getReadableValueOfCategories(car.category)}}</b></span></mat-list-item>
-          <mat-list-item><span><b>{{car.manufactureYear}}</b></span></mat-list-item>
-          <mat-list-item><span><b>{{car.numberOfPeople}}</b></span></mat-list-item>
-          <mat-list-item><span><b *ngIf="car.airCon; else noAirCon">Tak</b>
+    <mat-card-content>
+      <mat-grid-list cols="4" class="myHeight">
+        <mat-grid-tile class="myHeight">
+          <mat-list style="text-align: right">
+            <mat-list-item><span>Kategoria:</span></mat-list-item>
+            <mat-list-item><span>Rok produkcji:</span></mat-list-item>
+            <mat-list-item><span>Liczba osób:</span></mat-list-item>
+            <mat-list-item><span>Klimatyzacja:</span></mat-list-item>
+            <mat-list-item><span>Paliwo:</span></mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile class="myHeight">
+          <mat-list>
+            <mat-list-item><span><b>{{getReadableValueOfCategories(car.category)}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.manufactureYear}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.numberOfPeople}}</b></span></mat-list-item>
+            <mat-list-item><span><b *ngIf="car.airCon; else noAirCon">Tak</b>
               <ng-template #noAirCon><b>Nie</b></ng-template></span></mat-list-item>
-          <mat-list-item><span><b>{{getReadableValueOfFuel(car.fuel)}}</b></span></mat-list-item>
-        </mat-list>
-      </mat-grid-tile>
-      <mat-grid-tile class="myHeight">
-        <mat-list style="text-align: right;">
-          <mat-list-item><span>Skrzynia biegów:</span></mat-list-item>
-          <mat-list-item><span>Liczba drzwi:</span></mat-list-item>
-          <mat-list-item><span>Silnik:</span></mat-list-item>
-          <mat-list-item><span>Napęd:</span></mat-list-item>
-          <mat-list-item><span>Czy dostępny:</span></mat-list-item>
-        </mat-list>
-      </mat-grid-tile>
-      <mat-grid-tile class="myHeight">
-        <mat-list>
-          <mat-list-item><span><b>{{getReadableValueOfGearbox(car.gearbox)}}</b></span></mat-list-item>
-          <mat-list-item><span><b>{{car.numberOfDoor}}</b></span></mat-list-item>
-          <mat-list-item><span><b>{{car.engineSize}}</b></span></mat-list-item>
-          <mat-list-item><span><b>{{getReadableValueOfDrive(car.driveType)}}</b></span></mat-list-item>
-          <mat-list-item><span><b *ngIf="car.isAvailable; else noAvailable">Tak</b>
+            <mat-list-item><span><b>{{getReadableValueOfFuel(car.fuel)}}</b></span></mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile class="myHeight">
+          <mat-list style="text-align: right;">
+            <mat-list-item><span>Skrzynia biegów:</span></mat-list-item>
+            <mat-list-item><span>Liczba drzwi:</span></mat-list-item>
+            <mat-list-item><span>Silnik:</span></mat-list-item>
+            <mat-list-item><span>Napęd:</span></mat-list-item>
+            <mat-list-item><span>Czy dostępny:</span></mat-list-item>
+          </mat-list>
+        </mat-grid-tile>
+        <mat-grid-tile class="myHeight">
+          <mat-list>
+            <mat-list-item><span><b>{{getReadableValueOfGearbox(car.gearbox)}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.numberOfDoor}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{car.engineSize}}</b></span></mat-list-item>
+            <mat-list-item><span><b>{{getReadableValueOfDrive(car.driveType)}}</b></span></mat-list-item>
+            <mat-list-item><span><b *ngIf="car.isAvailable; else noAvailable">Tak</b>
               <ng-template #noAvailable><b>Nie</b></ng-template></span></mat-list-item>
-        </mat-list>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </mat-card-content>
-</mat-card>
+          </mat-list>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
 
-<div style="padding-bottom: 2px" *ngIf="isSummary">
-  <mat-card class="mat-card-summary">
+  <mat-card class="mat-card-summary" *ngIf="isSummary">
 
     <div fxLayout="row" fxLayoutAlign="space-between center">
       <mat-list fxFlex="50">
@@ -197,7 +198,7 @@
 
       </mat-list>
       <div fxFlex="50" fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button color="accent" class="large-button">REZERWUJĘ</button>
+        <button mat-raised-button color="accent" class="large-button" (click)="this.sendReservation(this.reservation)">REZERWUJĘ</button>
       </div>
     </div>
   </mat-card>

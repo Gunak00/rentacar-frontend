@@ -8,8 +8,10 @@ import {CarFuelType} from "../car/enums/carFuelType";
 import {CarDriveType} from "../car/enums/carDriveType";
 import {CarGearboxType} from "../car/enums/carGearboxType";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
-import {Reservation} from "./reservation";
 import {DatePipe} from "@angular/common";
+import {Reservation} from "./model/reservation";
+import {ReservationService} from "./service/reservation.service";
+import {AuthService} from "../user/service/auth.service";
 
 
 @Component({
@@ -25,23 +27,23 @@ export class ReservationComponent implements OnInit{
 
   readonly NUMBER_DAYS_TO_LONG_TERM_PRICE: number  = 10;
   public isSummary: boolean = false;
-  public summary: Reservation[] = [];
   public car: Car;
-  public reservation: Reservation = new Reservation(undefined, '', '',0, 0, 0, '', '', '', '');
+  public reservation: Reservation = new Reservation(undefined, '', '', '',0, 0, 0, '', '', '', '');
   public formGroup: FormGroup;
-  public pickUpLocations: string[] = ['Lublin, ul. Kowalska 15', "Lublin, ul. Brzozowa 2", "Lublin, al. Solidarności 75"];
+  public pickUpLocations: string[] = ['Makowiec, ul. Leśna 11', 'Zalesice 76', 'Lublin, ul. Kowalska 15', "Lublin, ul. Brzozowa 2", "Lublin, al. Solidarności 75"];
   public returnLocations: string[] = this.pickUpLocations;
   public defaultImage: string = "../../../assets/images/home-page/small.jpg";
 
   constructor(private carService: CarService, private route: ActivatedRoute, private formBuilder: FormBuilder,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer, private reservationService: ReservationService, private authService: AuthService) {
     this.formGroup = this.formBuilder.group({
       pickUpLocation: [''],
       returnLocation: [''],
       dateRangeStart: [''],
       dateRangeEnd: [''],
     });
-    this.summary.push(this.reservation);
+
+    this.reservation.recipient = this.authService.getEmail();
   }
 
   ngOnInit(): void {
@@ -84,6 +86,14 @@ export class ReservationComponent implements OnInit{
         this.reservation.endDate = datePipe.transform(date, 'dd/MM/yyyy');
       }
     })
+  }
+
+  public sendReservation(reservation: Reservation){
+    console.log(reservation);
+    this.reservationService.sendReservation(reservation).subscribe(value => {
+      console.log(value);
+    });
+    console.log("DUUUUUPA");
   }
 
   public submitForm(){

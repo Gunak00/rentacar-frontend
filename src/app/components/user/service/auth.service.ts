@@ -23,6 +23,14 @@ export class AuthService {
     return localStorage.getItem("token");
   }
 
+  public setEmail(email: string){
+    localStorage.setItem("email", email);
+  }
+
+  public getEmail(): string{
+    return localStorage.getItem("email");
+  }
+
   public clear(){
     localStorage.clear();
   }

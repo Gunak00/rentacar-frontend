@@ -28,9 +28,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.userService.login(this.loginForm.value).subscribe((value: any) => {
-      console.log(value.accessToken + " " + value.role);
+      console.log(value.accessToken + " " + value.role + " " + value.email);
       this.userAuthService.setToken(value.accessToken);
       this.userAuthService.setRole(value.role);
+      this.userAuthService.setEmail(value.email);
       this.router.navigate(['/home']);
       this.getUsers(value.accessToken);
     });
