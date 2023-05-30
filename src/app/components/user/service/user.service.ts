@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {catchError, Observable, throwError} from "rxjs";
 import {User} from "../model/user";
 import {AuthService} from "./auth.service";
 
@@ -38,7 +38,11 @@ export class UserService {
   }
 
   public addUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiServerUrl}/user/add`, user, {headers: this.header});
+    return this.http.post<User>(`${this.apiServerUrl}/user/add`, user, {headers: this.header}).pipe(
+      catchError(err => {
+        return throwError(err);
+      })
+    );
   }
 
   public updateUser(user: User, token: string): Observable<User> {

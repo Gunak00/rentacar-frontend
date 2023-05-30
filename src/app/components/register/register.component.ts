@@ -8,6 +8,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
 import {ConfirmRegisterDialogComponent} from "./confirm-register-dialog/confirm-register-dialog.component";
 import {Router} from "@angular/router";
+import {EmailDuplicateDialogComponent} from "./email-duplicate-dialog/email-duplicate-dialog.component";
 
 @Component({
   selector: 'app-register',
@@ -43,17 +44,17 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     // Handle form submission here
     this.userService.addUser(this.registerForm.value)
-      .pipe(
-        catchError(err => {
-          this.dialog.open(ErrorDialogComponent);
-          return of(err);
-        }))
       .subscribe(response => {
         console.log(response)
         const matDialogRef = this.dialog.open(ConfirmRegisterDialogComponent);
         matDialogRef.afterClosed().subscribe(() => {
           this.router.navigateByUrl('/login').then(null);
         })
-      })
+      },
+        error => {
+          if (error.status === 409){
+            this.dialog.open(EmailDuplicateDialogComponent);
+          }
+        })
   }
 }
