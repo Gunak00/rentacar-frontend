@@ -39,66 +39,81 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <mat-grid-list cols="3">
-    <mat-grid-tile class="types">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title class="mat-headline-6">Małe samochody</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="../../../assets/images/home-page/small.jpg" alt="Small car">
-        <mat-card-content>
-          <p class="mat-body-1">
-            Samochody małe - to niewielkie pojazdy idealne dla miasta i krótkich dystansów. Są zazwyczaj wyposażone w
-            małe
-            silniki benzynowe lub diesla, co czyni je bardzo ekonomicznymi. Zwykle posiadają miejsca dla dwóch do pięciu
-            pasażerów oraz niewielką pojemność bagażnika. Samochody te charakteryzują się łatwością manewrowania, co
-            czyni
-            je idealnymi dla osób, które często jeżdżą w miejskiej dżungli.
-          </p>
-        </mat-card-content>
-        <mat-card-actions align="end">
-          <button class="right-button" mat-raised-button color="accent" (click)="goToProperCarRental('Small')">Wynajmij</button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile class="types">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title class="mat-headline-6">Klasa średnia</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="../../../assets/images/home-page/medium.jpg" alt="Medium car">
-        <mat-card-content>
-          <p class="mat-body-1">
-            Samochody klasy średniej - to popularne pojazdy dla rodzin i osób podróżujących na dalsze dystanse.
-            Charakteryzują się przestronnym wnętrzem, co czyni je idealnymi dla rodzin z dziećmi oraz dla osób, które
-            potrzebują miejsca na bagaże. W samochodach tych zwykle znajduje się silnik benzynowy lub silnik napędzany
-            olejem napędowym o większej
-            pojemności, co oznacza większą moc i lepsze osiągi.
-          </p>
-        </mat-card-content>
-        <mat-card-actions align="end">
-          <button class="right-button" mat-raised-button color="accent" (click)="goToProperCarRental('Medium')">Wynajmij</button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile class="types">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title class="mat-headline-6">Samochody luksusowe</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image src="../../../assets/images/home-page/luxury.jpg" alt="Luxury car">
-        <mat-card-content>
-          <p class="mat-body-1">
-            Samochody luksusowe - to samochody najwyższej klasy, które charakteryzują się najwyższą jakością wykończenia
-            i wyposażeniem. Są to zazwyczaj samochody dużych marek, które oferują najnowocześniejsze rozwiązania
-            technologiczne. Charakteryzują się one również potężnymi silnikami i dynamicznymi osiągami, co czyni je
-            idealnymi dla osób, które cenią sobie luksus, wygodę i szybkość.
-          </p>
-        </mat-card-content>
-        <mat-card-actions align="end">
-          <button class="right-button" mat-raised-button color="accent" (click)="goToProperCarRental('Luxury')">Wynajmij</button>
-        </mat-card-actions>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+
+
+<!--  <app-footer></app-footer>-->
+
+
+
 </div>
+
+<mat-grid-list cols="3" rowHeight="600px" class="categories">
+  <mat-grid-tile class="types">
+
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title class="mat-headline-6">Małe samochody</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/images/home-page/small.jpg" alt="Small car">
+      <mat-card-content>
+        <p class="mat-body-1">
+          Samochody małe - to niewielkie pojazdy idealne dla miasta i krótkich dystansów. Są zazwyczaj wyposażone w
+          małe
+          silniki benzynowe lub diesla, co czyni je bardzo ekonomicznymi. Zwykle posiadają miejsca dla dwóch do pięciu
+          pasażerów oraz niewielką pojemność bagażnika. Samochody te charakteryzują się łatwością manewrowania, co
+          czyni
+          je idealnymi dla osób, które często jeżdżą w miejskiej dżungli.
+        </p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button class="right-button" mat-raised-button color="accent" (click)="goToProperCarRental('Small')">
+          Wynajmij
+        </button>
+      </mat-card-actions>
+    </mat-card>
+
+  </mat-grid-tile>
+  <mat-grid-tile class="types">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title class="mat-headline-6">Klasa średnia</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/images/home-page/medium.jpg" alt="Medium car">
+      <mat-card-content>
+        <p class="mat-body-1">
+          Samochody klasy średniej - to popularne pojazdy dla rodzin i osób podróżujących na dalsze dystanse.
+          Charakteryzują się przestronnym wnętrzem, co czyni je idealnymi dla rodzin z dziećmi oraz dla osób, które
+          potrzebują miejsca na bagaże. W samochodach tych zwykle znajduje się silnik benzynowy lub silnik napędzany
+          olejem napędowym o większej
+          pojemności, co oznacza większą moc i lepsze osiągi.
+        </p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button class="right-button" mat-raised-button color="accent" (click)="goToProperCarRental('Medium')">
+          Wynajmij
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile class="types">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title class="mat-headline-6">Samochody luksusowe</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/images/home-page/luxury.jpg" alt="Luxury car">
+      <mat-card-content>
+        <p class="mat-body-1">
+          Samochody luksusowe - to samochody najwyższej klasy, które charakteryzują się najwyższą jakością wykończenia
+          i wyposażeniem. Są to zazwyczaj samochody dużych marek, które oferują najnowocześniejsze rozwiązania
+          technologiczne. Charakteryzują się one również potężnymi silnikami i dynamicznymi osiągami, co czyni je
+          idealnymi dla osób, które cenią sobie luksus, wygodę i szybkość.
+        </p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button class="right-button" mat-raised-button color="accent" (click)="goToProperCarRental('Luxury')">
+          Wynajmij
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
