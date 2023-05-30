@@ -16,6 +16,10 @@ import {catchError, of} from "rxjs";
 import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
 import {ConfirmRegisterDialogComponent} from "../register/confirm-register-dialog/confirm-register-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {
+  ConfirmEditCarDialogComponent
+} from "../admin/edit-car/confirm-edit-car-dialog/confirm-edit-car-dialog.component";
+import {ConfirmEditUserDialogComponent} from "./confirm-edit-user-dialog/confirm-edit-user-dialog.component";
 
 @Component({
   selector: 'app-user',
@@ -84,7 +88,7 @@ export class UserComponent implements OnInit{
         }))
       .subscribe(response => {
         console.log(response)
-        this.dialog.open(ConfirmRegisterDialogComponent);
+        this.dialog.open(ConfirmEditUserDialogComponent);
       })
   }
 

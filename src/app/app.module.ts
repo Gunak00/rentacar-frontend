@@ -47,6 +47,7 @@ import { ConfirmRegisterDialogComponent } from './components/register/confirm-re
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { ConfirmAddCarDialogComponent } from './components/admin/add-car/confirm-add-car-dialog/confirm-add-car-dialog.component';
 import { ConfirmEditCarDialogComponent } from './components/admin/edit-car/confirm-edit-car-dialog/confirm-edit-car-dialog.component';
+import { ConfirmEditUserDialogComponent } from './components/user/confirm-edit-user-dialog/confirm-edit-user-dialog.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { ConfirmEditCarDialogComponent } from './components/admin/edit-car/confi
     ConfirmRegisterDialogComponent,
     ErrorDialogComponent,
     ConfirmAddCarDialogComponent,
-    ConfirmEditCarDialogComponent
+    ConfirmEditCarDialogComponent,
+    ConfirmEditUserDialogComponent
   ],
     imports: [
         BrowserModule,
