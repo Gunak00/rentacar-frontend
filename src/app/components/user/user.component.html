@@ -1,2 +1,68 @@
-<p>user works!</p>
-<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Wpisz nowe wartości do pól, które chcesz edytować:</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Imię</mat-label>
+        <input matInput formControlName="firstName">
+        <mat-error *ngIf="editUserForm.get('firstName').invalid && editUserForm.get('firstName').touched">
+          Imię jest wymagane.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Nazwisko</mat-label>
+        <input matInput formControlName="lastName">
+        <mat-error *ngIf="editUserForm.get('lastName').invalid && editUserForm.get('lastName').touched">
+          Nazwisko jest wymagane.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email">
+        <mat-error
+          *ngIf="editUserForm.get('email').errors?.['required'] && editUserForm.get('email').touched; else notValidEmail">
+          Email jest wymagany.
+        </mat-error>
+        <ng-template #notValidEmail>
+          <mat-error>Podany email jest nieprawidłowy</mat-error>
+        </ng-template>
+      </mat-form-field>
+
+
+
+      <mat-form-field>
+        <mat-label>Numer prawa jazdy</mat-label>
+        <input matInput formControlName="drivingLicenseNumber" required>
+        <mat-error *ngIf="editUserForm.get('drivingLicenseNumber').invalid && editUserForm.get('drivingLicenseNumber').touched">
+          Numer prawa jazdy jest wymagany.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Wiek</mat-label>
+        <input matInput formControlName="age" type="number" required>
+        <mat-error *ngIf="editUserForm.get('age').invalid && editUserForm.get('age').touched">
+          Wiek jest wymagany.
+        </mat-error>
+      </mat-form-field>
+
+      <p>Jeśli chcesz zmienić hasło, podaj nowe:</p>
+      <mat-form-field>
+        <mat-label>Nowe Hasło</mat-label>
+        <input matInput formControlName="newPassword" type="password">
+        <mat-error *ngIf="editUserForm.get('newPassword').invalid && editUserForm.get('newPassword').touched">
+          Hasło jest wymagane.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-card-actions>
+        <button mat-raised-button color="accent" type="submit">Zapisz</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>
+

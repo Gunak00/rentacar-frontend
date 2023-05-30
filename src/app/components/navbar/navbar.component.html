@@ -23,7 +23,17 @@
   </div>
   <button *ngIf="!isLoggedIn()" mat-raised-button color="accent" routerLink="/login">Zaloguj</button>
   <button *ngIf="!isLoggedIn()" mat-raised-button color="accent" routerLink="/register">Zarejestruj</button>
-  <button *ngIf="isLoggedIn()" (click)="logout()" mat-raised-button color="accent" routerLink="/home">Wyloguj</button>
+  <!--  <button *ngIf="isLoggedIn()" (click)="logout()" mat-raised-button color="accent" routerLink="/home">Moje konto</button>-->
+
+  <button *ngIf="isLoggedIn()" mat-raised-button color="accent" class="button-account" [matMenuTriggerFor]="menuUser">
+    <span class="button-text">Moje konto</span>
+    <span class="button-icon"><mat-icon>menu</mat-icon></span>
+  </button>
+  <mat-menu #menuUser="matMenu" xPosition="before" class="matMenuCustomize">
+    <button mat-menu-item routerLink="/user">Edytuj profil</button>
+    <button mat-menu-item (click)="logout()" routerLink="/home">Wyloguj</button>
+  </mat-menu>
+
 </mat-toolbar>
 
 

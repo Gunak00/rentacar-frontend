@@ -36,6 +36,6 @@ export class AuthService {
   }
 
   public isLoggedIn(){
-    return this.getRole() && this.getToken();
+    return this.getRole() && this.getToken() && this.getEmail();
   }
 }

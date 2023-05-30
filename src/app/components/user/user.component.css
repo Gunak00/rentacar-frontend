@@ -1,0 +1,26 @@
+mat-card {
+  max-width: 500px;
+  margin: 1em auto;
+  padding: 0;
+  text-align: left;
+  /*background-color: var(--mat-mdc-button-persistent-ripple-color);*/
+  background-color: #3849a2;
+  /*background-color: ;*/
+}
+
+
+mat-form-field {
+  display: block;
+}
+
+mat-card-title{
+  color: white;
+}
+
+mat-card-content{
+  padding: 3em;
+}
+
+p{
+  color: white;
+}

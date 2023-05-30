@@ -16,3 +16,31 @@ button{
   min-width: 120px;
 }
 
+.button-account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 120px;
+}
+
+.button-text {
+  flex-grow: 1;
+  text-align: left;
+  margin-right: 1em;
+}
+
+.button-icon {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.button-icon mat-icon {
+  height: 1em;
+  width: 1em;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+
+
+

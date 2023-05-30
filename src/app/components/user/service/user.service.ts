@@ -32,12 +32,18 @@ export class UserService {
     return this.http.get<User>(`${this.apiServerUrl}/user/find/${userId}`);
   }
 
+  public getUserByEmail(userEmail: string, token: string): Observable<User> {
+    this.header = this.header.set('Authorization', 'Bearer ' + token);
+    return this.http.get<User>(`${this.apiServerUrl}/user/find/email/${userEmail}`, {headers: this.header});
+  }
+
   public addUser(user: User): Observable<User> {
     return this.http.post<User>(`${this.apiServerUrl}/user/add`, user, {headers: this.header});
   }
 
-  public updateUser(user: User): Observable<User> {
-    return this.http.put<User>(`${this.apiServerUrl}/user/update`, user);
+  public updateUser(user: User, token: string): Observable<User> {
+    this.header = this.header.set('Authorization', 'Bearer ' + token);
+    return this.http.put<User>(`${this.apiServerUrl}/user/update`, user, {headers: this.header});
   }
 
   public deleteUser(userId: number): Observable<void> {
