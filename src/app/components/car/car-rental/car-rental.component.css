@@ -27,3 +27,15 @@ button{
   flex-grow: 1;
 }
 
+.current-category{
+  width: 580px;
+  background-color: #3849a2;
+  color: white;
+  margin: 2em auto;
+}
+
+.center-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

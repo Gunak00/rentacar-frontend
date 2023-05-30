@@ -23,6 +23,7 @@ export class CarRentalComponent implements OnInit {
   public cars: Car[] = [];
   public filteredCars: Car[] = [];
   public defaultImage: string = "../../../assets/images/home-page/small.jpg";
+  public currentCategory: string = '';
 
   constructor(private carService: CarService, private sanitizer: DomSanitizer, private router: Router) {
   }
@@ -31,6 +32,7 @@ export class CarRentalComponent implements OnInit {
     this.getAllCars();
 
     this.carService.getCurrentCategory().subscribe(category => {
+      this.currentCategory = category;
       this.filteredCars = this.cars.filter(car => car.category === category);
     })
   }
