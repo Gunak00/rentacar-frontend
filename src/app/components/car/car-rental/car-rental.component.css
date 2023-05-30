@@ -39,3 +39,7 @@ button{
   justify-content: center;
   align-items: center;
 }
+
+.not-available {
+  background-color: grey;
+}

@@ -6,7 +6,7 @@
 
 <mat-grid-list cols="2">
   <mat-grid-tile *ngFor="let car of filteredCars">
-    <mat-card>
+    <mat-card [ngClass]="{'not-available': !car.isAvailable}">
 
       <mat-card-title style="text-align: center; margin-top: 1em;"><b>{{car.name}} {{car.model}}</b></mat-card-title>
 
@@ -66,7 +66,7 @@
         </mat-grid-list>
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-raised-button color="accent" (click)="goToReservationProcess(car.id)">Wynajmij</button>
+        <button mat-raised-button color="accent" [disabled]="!car.isAvailable" (click)="goToReservationProcess(car.id)">Wynajmij</button>
       </mat-card-actions>
     </mat-card>
   </mat-grid-tile>
