@@ -18,9 +18,11 @@ export class UserService {
   }
 
   public login(payload: any) {
-    return this.http.post(`${this.apiServerUrl}/user/login`, payload, {
-      headers: this.header
-    });
+    return this.http.post(`${this.apiServerUrl}/user/login`, payload, {headers: this.header}).pipe(
+      catchError(err => {
+        return throwError(err)
+      })
+    );
   }
 
   public getUsers(token: string): Observable<User[]> {

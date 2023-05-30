@@ -49,6 +49,7 @@ import { ConfirmAddCarDialogComponent } from './components/admin/add-car/confirm
 import { ConfirmEditCarDialogComponent } from './components/admin/edit-car/confirm-edit-car-dialog/confirm-edit-car-dialog.component';
 import { ConfirmEditUserDialogComponent } from './components/user/confirm-edit-user-dialog/confirm-edit-user-dialog.component';
 import { EmailDuplicateDialogComponent } from './components/register/email-duplicate-dialog/email-duplicate-dialog.component';
+import { AuthenticationErrorDialogComponent } from './components/login/authentication-error-dialog/authentication-error-dialog.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { EmailDuplicateDialogComponent } from './components/register/email-dupli
     ConfirmAddCarDialogComponent,
     ConfirmEditCarDialogComponent,
     ConfirmEditUserDialogComponent,
-    EmailDuplicateDialogComponent
+    EmailDuplicateDialogComponent,
+    AuthenticationErrorDialogComponent
   ],
     imports: [
         BrowserModule,
