@@ -121,7 +121,17 @@
           </mat-form-field>
         </mat-grid-tile>
 
-        <mat-grid-tile colspan="2">
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-label>Czy dostępny</mat-label>
+            <mat-select formControlName="isAvailable">
+              <mat-option [value]="true">Tak</mat-option>
+              <mat-option [value]="false">Nie</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
           <input type="file" class="file-input"
                  (change)="onFileSelected($event)" #fileUpload>
 

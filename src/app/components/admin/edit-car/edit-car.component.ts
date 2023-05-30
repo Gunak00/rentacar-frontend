@@ -51,8 +51,10 @@ export class EditCarComponent implements OnInit {
       gearbox: this.editCar.gearbox,
       numberOfDoor: this.editCar.numberOfDoor,
       engineSize: this.editCar.engineSize,
-      driveType: this.editCar.driveType
+      driveType: this.editCar.driveType,
+      isAvailable: this.editCar.isAvailable
     })
+    console.log(this.editCar);
   }
 
   onSubmit() {
@@ -69,6 +71,7 @@ export class EditCarComponent implements OnInit {
     this.editCar.numberOfDoor = this.editCarForm.value.numberOfDoor;
     this.editCar.engineSize = this.editCarForm.value.engineSize;
     this.editCar.driveType = this.editCarForm.value.driveType;
+    this.editCar.isAvailable = this.editCarForm.value.isAvailable;
 
     this.carService.editCar(this.editCar)
       .pipe(catchError(err => {
@@ -94,7 +97,8 @@ export class EditCarComponent implements OnInit {
       gearbox: new FormControl('', [Validators.required]),
       numberOfDoor: new FormControl('', [Validators.required]),
       engineSize: new FormControl('', [Validators.required]),
-      driveType: new FormControl('', [Validators.required])
+      driveType: new FormControl('', [Validators.required]),
+      isAvailable: new FormControl('')
     })
   }
 
