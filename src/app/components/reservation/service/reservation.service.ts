@@ -15,7 +15,8 @@ export class ReservationService {
   header = new HttpHeaders({'No-Auth': 'True'});
   constructor(private http: HttpClient) { }
 
-  public sendReservation(reservation: Reservation): Observable<Reservation>{
+  public sendReservation(reservation: Reservation, token: string): Observable<Reservation>{
+    this.header = this.header.set('Authorization', 'Bearer ' + token);
     return this.http.post<Reservation>(`${this.apiServerUrl}/reservation/sendReservation`, reservation, {
       headers: this.header
     });

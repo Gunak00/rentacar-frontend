@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{role: 'ROLE_ADMIN'} },
   { path: 'add', component: AddCarComponent, canActivate:[AuthGuard], data:{role: 'ROLE_ADMIN'} },
   { path: 'edit', component: EditCarComponent, canActivate:[AuthGuard], data:{role: 'ROLE_ADMIN'} },
-  { path: 'reservation', component: ReservationComponent, canActivate:[AuthGuard], data:{role: 'ROLE_USER'} },
+  { path: 'reservation', component: ReservationComponent, canActivate:[AuthGuard], data:{role: ['ROLE_USER', 'ROLE_ADMIN']} },
   { path: '**', redirectTo: 'home' }
 ];
 

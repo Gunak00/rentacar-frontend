@@ -93,7 +93,7 @@ export class ReservationComponent implements OnInit{
 
   public sendReservation(reservation: Reservation){
     console.log(reservation);
-    this.reservationService.sendReservation(reservation).subscribe(value => {
+    this.reservationService.sendReservation(reservation, this.authService.getToken()).subscribe(value => {
       console.log(value);
     });
     this.openDialog();
