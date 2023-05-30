@@ -26,10 +26,18 @@ export class RegisterComponent implements OnInit {
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       drivingLicenseNumber: new FormControl('', [Validators.required]),
-      age: new FormControl('', [Validators.required]),
+      age: new FormControl('', [Validators.required, this.ageValidator]),
     });
+  }
+
+  ageValidator(control: FormControl) {
+    let age = control.value;
+    if (age < 18) {
+      return {'age': true};
+    }
+    return null;
   }
 
   onSubmit() {
