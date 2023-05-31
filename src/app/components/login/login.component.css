@@ -24,3 +24,7 @@ mat-card-title{
 mat-card-content{
   padding: 3em;
 }
+
+.spacer {
+  flex-grow: 1;
+}
