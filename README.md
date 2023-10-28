@@ -9,14 +9,6 @@ RentACar's frontend is built using Angular and serves as the user interface for 
 
 The frontend of RentACar provides a  very simple interface for both customers and administrators to interact with the car rental system. It seamlessly integrates with the backend to offer features such as browsing available vehicles, making reservations, and managing the vehicle fleet.
 
-## Screenshots
-
-Here are some screenshots of the frontend interface:
-
-![Screenshot 1](link_to_frontend_screenshot_1)
-![Screenshot 2](link_to_frontend_screenshot_2)
-<!-- Add more screenshots as needed -->
-
 ## Features
 
 - **User Authentication**: Users can create accounts and log in to be able to make car reservations
@@ -27,3 +19,23 @@ Here are some screenshots of the frontend interface:
 ## Technologies Used
 
 The frontend of RentACar is built with Angular, a popular web application framework. It uses HTML, CSS, and TypeScript to create user interface.
+## Screenshots
+
+Here are some screenshots of the frontend interface:
+
+![home page](./screensToReadme/homePage.jpg)
+
+![ourFleet](./screensToReadme/ourFleet.jpg)
+
+![medium cars](./screensToReadme/mediumCars.jpg)
+
+![reservation process](./screensToReadme/reservationProcess.png)
+
+![email Confirmation](./screensToReadme/emailConfirmation.jpg)
+
+![admin Panel](./screensToReadme/adminPanel.jpg)
+
+![edit Cat](./screensToReadme/editCar.jpg)
+<!-- Add more screenshots as needed -->
+
+
