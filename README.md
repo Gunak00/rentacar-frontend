@@ -1,27 +1,29 @@
-# RentacarFrontend
 
+
+# RentACar - Frontend
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
-## Development server
+RentACar's frontend is built using Angular and serves as the user interface for the application. This README file specifically covers the frontend part of the project.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Overview
 
-## Code scaffolding
+The frontend of RentACar provides a  very simple interface for both customers and administrators to interact with the car rental system. It seamlessly integrates with the backend to offer features such as browsing available vehicles, making reservations, and managing the vehicle fleet.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Screenshots
 
-## Build
+Here are some screenshots of the frontend interface:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![Screenshot 1](link_to_frontend_screenshot_1)
+![Screenshot 2](link_to_frontend_screenshot_2)
+<!-- Add more screenshots as needed -->
 
-## Running unit tests
+## Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **User Authentication**: Users can create accounts and log in to be able to make car reservations
+- **Vehicle Browsing**: Browse the available vehicles with detailed information.
+- **Reservation**: Easily make reservations for specific vehicles and durations.
+- **Admin Dashboard**: Administrators have access to a dashboard for fleet management.
 
-## Running end-to-end tests
+## Technologies Used
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The frontend of RentACar is built with Angular, a popular web application framework. It uses HTML, CSS, and TypeScript to create user interface.
