@@ -65,19 +65,21 @@ export class CarService {
     return this._currentCategory;
   }
 
-  public getReadableValueOfFuel(carFuelType: CarFuelType){
+  public getReadableValueOfFuel(carFuelType: CarFuelType) {
     return carFuelTypeMap[carFuelType] || carFuelType;
   }
-  public getReadableValueOfDrive(carDriveType: CarDriveType){
+
+  public getReadableValueOfDrive(carDriveType: CarDriveType) {
     return carDriveTypeMap[carDriveType] || carDriveType;
   }
 
-  public getReadableValueOfGearbox(carGearboxType: CarGearboxType){
+  public getReadableValueOfGearbox(carGearboxType: CarGearboxType) {
     return carGearboxTypeMap[carGearboxType] || carGearboxType;
   }
 
-  public getReadableValueOfCategories(category: string){
+  public getReadableValueOfCategories(category: string) {
     return carCategoryMap[category] || category;
   }
+
 
 }

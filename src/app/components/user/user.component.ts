@@ -75,6 +75,7 @@ export class UserComponent implements OnInit{
     this.editUser.email = this.editUserForm.value.email;
     this.editUser.drivingLicenseNumber = this.editUserForm.value.drivingLicenseNumber;
     this.editUser.role = this.user.role;
+    this.editUser.age = this.user.age;
     if (this.editUserForm.value.newPassword != '')
       this.editUser.password = this.editUserForm.value.newPassword;
 

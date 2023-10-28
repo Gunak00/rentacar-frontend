@@ -28,8 +28,8 @@
           <mat-form-field appearance="fill">
             <mat-label>Zakres dat</mat-label>
             <mat-date-range-input [rangePicker]="picker">
-              <input matStartDate placeholder="Start date" formControlName="dateRangeStart">
-              <input matEndDate placeholder="End date" formControlName="dateRangeEnd">
+              <input matStartDate placeholder="Start date" formControlName="dateRangeStart" [min]="today">
+              <input matEndDate placeholder="End date" formControlName="dateRangeEnd" [min]="today">
             </mat-date-range-input>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>

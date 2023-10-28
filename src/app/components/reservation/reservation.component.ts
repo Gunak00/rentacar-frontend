@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Car} from "../car/model/car";
 import {CarService} from "../car/service/car.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -14,6 +14,7 @@ import {ReservationService} from "./service/reservation.service";
 import {AuthService} from "../user/service/auth.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmReservationDialogComponent} from "./confirm-reservation-dialog/confirm-reservation-dialog.component";
+import {DateAdapter} from "@angular/material/core";
 
 
 @Component({
@@ -23,22 +24,28 @@ import {ConfirmReservationDialogComponent} from "./confirm-reservation-dialog/co
 })
 
 
-export class ReservationComponent implements OnInit{
+export class ReservationComponent implements OnInit {
 
   private carId: number;
 
-  readonly NUMBER_DAYS_TO_LONG_TERM_PRICE: number  = 10;
+  readonly NUMBER_DAYS_TO_LONG_TERM_PRICE: number = 10;
   public isSummary: boolean = false;
   public car: Car;
-  public reservation: Reservation = new Reservation(undefined, '', '', '',0, 0, 0, '', '', '', '');
+  public today: Date;
+  public reservation: Reservation = new Reservation(undefined, '', '', '', 0, 0, 0, '', '', '', '');
   public formGroup: FormGroup;
-  public pickUpLocations: string[] = ['Makowiec, ul. Leśna 11', 'Zalesice 76', 'Lublin, ul. Kowalska 15', "Lublin, ul. Brzozowa 2", "Lublin, al. Solidarności 75"];
+  public pickUpLocations: string[] = ['Lublin, ul. Kowalska 15', "Lublin, ul. Brzozowa 2", "Lublin, al. Solidarności 75"];
   public returnLocations: string[] = this.pickUpLocations;
   public defaultImage: string = "../../../assets/images/home-page/small.jpg";
 
   constructor(private carService: CarService, private route: ActivatedRoute, private formBuilder: FormBuilder,
               private sanitizer: DomSanitizer, private reservationService: ReservationService,
               private authService: AuthService, public dialog: MatDialog, private router: Router) {
+
+    this.today = new Date();
+    console.log(this.today);
+
+
     this.formGroup = this.formBuilder.group({
       pickUpLocation: [''],
       returnLocation: [''],
@@ -77,7 +84,7 @@ export class ReservationComponent implements OnInit{
 
     this.formGroup.get('dateRangeEnd').valueChanges.subscribe(end => {
       this.reservation.endDate = end;
-      if (this.reservation.endDate && this.reservation.startDate){
+      if (this.reservation.endDate && this.reservation.startDate) {
         this.reservation.numberOfDays = moment(this.reservation.endDate).diff(moment(this.reservation.startDate), 'days') + 1;
         this.reservation.priceForDay = this.calculatePrice(this.reservation.numberOfDays);
         this.reservation.priceAll = this.reservation.numberOfDays * this.reservation.priceForDay;
@@ -91,11 +98,11 @@ export class ReservationComponent implements OnInit{
     })
   }
 
-  public sendReservation(reservation: Reservation){
+  public sendReservation(reservation: Reservation) {
     console.log(reservation);
     this.car.isAvailable = false;
     this.carService.editCar(this.car).subscribe(value => {
-      console.log(value);
+        console.log(value);
       }
     );
     this.reservationService.sendReservation(reservation, this.authService.getToken()).subscribe(value => {
@@ -104,15 +111,15 @@ export class ReservationComponent implements OnInit{
     this.openDialog();
   }
 
-  private openDialog(){
+  private openDialog() {
     const dialogRef = this.dialog.open(ConfirmReservationDialogComponent)
 
-    dialogRef.afterClosed().subscribe(result =>{
+    dialogRef.afterClosed().subscribe(result => {
       this.router.navigateByUrl('/home').then(null);
     })
   }
 
-  public submitForm(){
+  public submitForm() {
     console.log(this.formGroup.value);
     console.log(this.reservation);
   }
@@ -135,9 +142,9 @@ export class ReservationComponent implements OnInit{
 
   private getCarImage(car: Car) {
     const urlCreator = window.URL;
-    if (car.imageUrl == null){
+    if (car.imageUrl == null) {
       car.imageSafeUrl = this.defaultImage;
-    }else{
+    } else {
       let imageUrl: SafeUrl;
       this.carService.getImage(car.id, car.imageUrl).subscribe(blob => {
         imageUrl = this.sanitizer.bypassSecurityTrustUrl(
@@ -147,7 +154,7 @@ export class ReservationComponent implements OnInit{
     }
   }
 
-  private calculatePrice(days: number){
+  private calculatePrice(days: number) {
     if (days > this.NUMBER_DAYS_TO_LONG_TERM_PRICE)
       return this.car.priceLongTerm;
     return this.car.priceShortTerm;

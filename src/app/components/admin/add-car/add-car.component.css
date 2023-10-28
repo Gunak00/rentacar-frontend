@@ -1,5 +1,11 @@
 mat-card{
   margin: 3em;
+  background-color: #3849a2;
+  color: white;
+}
+
+span{
+  color: black;
 }
 
 mat-form-field {
