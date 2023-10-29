@@ -18,7 +18,7 @@ The frontend of RentACar provides a  very simple interface for both customers an
 
 ## Technologies Used
 
-The frontend of RentACar is built with Angular, a popular web application framework. It uses HTML, CSS, and TypeScript to create user interface.
+The frontend of RentACar is built with Angular, a popular web application framework. It uses Angular Material to create user interface.
 ## Screenshots
 
 Here are some screenshots of the frontend interface:
